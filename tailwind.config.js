@@ -2,7 +2,24 @@ module.exports = {
     content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
     darkMode: false,
     theme: {
-      extend: {},
+      extend: {
+        colors: {
+            'white': '#ffffff',
+            'dark': '#232121',
+        },
+        grandientColorStops: {
+            50: '50%',
+        },
+        backgroundImage: {
+            'split-half': "linear-gradient(to right, #232121 50%, #FFFFFF 50%)",
+          },
+        borderRadius: {
+            'icon-computer': '3.125rem',
+        },
+      },
     },
+    variants: {
+        extend: {},
+      },
     plugins: [],
   }
