@@ -39,46 +39,92 @@
           </div>
         </div>
       </div>
-      <div class="w-full h-[1000px] pb-24">
-        <div class="flex items-center">
-          <img
-            src="@/assets/icons/telephone.svg"
-            alt="phone"
-            class="w-14 h-14"
-          />
-          <div class="flex flex-col">
-            <p class="text-4xl">Soita</p>
-            <p class="text-4xl">+358 44074 2509</p>
-          </div>
-        </div>
-        <div class="flex items-center">
-          <img
-            src="@/assets/icons/envelope.svg"
-            alt="envelope"
-            class="w-14 h-14"
-          />
-          <div class="flex flex-col">
-            <p class="text-4xl">Lähetä sähköpostia</p>
-            <p class="text-4xl">contact@eetuhuotari.dev</p>
-          </div>
-        </div>
-        <div>
-          <p class="text-4xl">Seuraa</p>
-          <div class="flex gap-4">
+      <div class="w-full h-[800px] pb-24 flex">
+        <div class="w-1/2 text-white space-y-14">
+          <h1 class="text-5xl">Yhteystiedot</h1>
+          <div class="flex items-center">
             <img
-              src="@/assets/icons/github.svg"
-              alt="github"
-              class="w-14 h-14"
+              src="@/assets/icons/telephone.svg"
+              alt="phone"
+              class="w-14 h-14 mr-3"
             />
+            <div class="flex flex-col">
+              <p class="text-4xl">Soita</p>
+              <p class="text-4xl">+358 44074 2509</p>
+            </div>
+          </div>
+          <div class="flex items-center">
             <img
-              src="@/assets/icons/linkedin.svg"
-              alt="linkedin"
-              class="w-14 h-14"
+              src="@/assets/icons/envelope.svg"
+              alt="envelope"
+              class="w-14 h-14 mr-3"
             />
+            <div class="flex flex-col">
+              <p class="text-4xl">Lähetä sähköpostia</p>
+              <p class="text-4xl">contact@eetuhuotari.dev</p>
+            </div>
           </div>
           <div>
+            <p class="text-4xl mb-4">Socials</p>
+            <div class="flex gap-6">
+              <div
+                class="w-20 h-20 bg-white rounded-full flex items-center justify-center"
+              >
+                <img
+                  src="@/assets/icons/github.svg"
+                  alt="github"
+                  class="w-16 h-16"
+                />
+              </div>
+              <div
+                class="w-20 h-20 bg-white rounded-full flex items-center justify-center"
+              >
+                <img
+                  src="@/assets/icons/linkedin.svg"
+                  alt="linkedin"
+                  class="w-16 h-16"
+                />
+              </div>
             </div>
-      </div>
+          </div>
+        </div>
+        <div class="w-1/2 flex">
+          <div class="w-full pl-12">
+            <form class="flex flex-col" @submit.prevent="sendEmail">
+              <input
+                v-model="form.email"
+                class="bg-dark text-white rounded-icon-computer p-10 mb-12"
+                type="email"
+                name="email"
+              />
+              <input
+                v-model="form.name"
+                class="bg-dark text-white rounded-icon-computer p-10 mb-10"
+                type="text"
+                name="name"
+              />
+              <input
+                v-model="form.subject"
+                class="bg-dark text-white rounded-icon-computer p-10 mb-12"
+                type="text"
+                name="subject"
+              />
+              <div class="flex">
+                <textarea
+                  v-model="form.message"
+                  class="bg-dark text-white rounded-icon-computer p-6 mr-12 flex-1"
+                  name="message"
+                ></textarea>
+                <input
+                  type="submit"
+                  value="Send"
+                  class="flex-initial bg-dark text-white rounded-icon-computer px-10 py-20 c"
+                  style="width: auto"
+                />
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -87,6 +133,7 @@
 <script>
 import { ref, onMounted, onUnmounted } from "vue";
 import { logosData } from "@/assets/logosData.js";
+import emailjs from "@emailjs/browser";
 
 export default {
   name: "MainPage",
@@ -94,6 +141,13 @@ export default {
     const logos = ref([]);
     const logoRefs = ref([]);
     const logoClasses = ref([]);
+
+    const form = ref({
+      email: "",
+      name: "",
+      subject: "",
+      message: "",
+    });
 
     const setLogoRef = (el) => {
       if (el) logoRefs.value.push(el);
@@ -108,6 +162,20 @@ export default {
             ? "bg-white"
             : "bg-dark";
       });
+    };
+
+    const sendEmail = async () => {
+      try {
+        const result = await emailjs.sendForm(
+          "service_358tl3q",
+          "template_hzup9em",
+          form.value,
+          "t8hd8mfRQtp1tgD1H"
+        );
+        console.log(result.text);
+      } catch (error) {
+        console.error(error.text);
+      }
     };
 
     const logosContext = require.context("@/assets/logos", false, /\.svg$/);
@@ -130,7 +198,7 @@ export default {
       window.removeEventListener("resize", calculatePositions);
     });
 
-    return { logos, setLogoRef, logoClasses };
+    return { logos, setLogoRef, logoClasses, sendEmail, form };
   },
 };
 </script>
