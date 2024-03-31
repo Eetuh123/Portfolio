@@ -17,6 +17,20 @@ module.exports = {
         borderRadius: {
             'icon-computer': '3.125rem',
         },
+        keyframes: {
+            grow: {
+              '0%': { transform: 'scale(0.45)', transformOrigin: 'top left'},
+              '100%': { transform: 'scaleX(1)', transformOrigin: 'top left'},
+            },
+            growReverse: {
+              '0%': { transform: 'scale(0.45)', transformOrigin: 'top right'},
+              '100%': { transform: 'scaleX(1)', transformOrigin: 'top right'},
+            },
+        },
+        animation: {
+            'grow': 'grow 0.4s linear',
+            'growreverse': 'growReverse 0.4s linear',
+        },
       },
     },
     variants: {

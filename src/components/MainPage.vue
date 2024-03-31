@@ -6,11 +6,12 @@
           v-for="(logo, index) in logos"
           :key="index"
           :ref="setLogoRef"
-          :class="logoClasses[index]"
-          class="flex w-60 h-60 justify-center items-center rounded-icon-computer hover:w-[30rem] hover:h-[30rem]"
+          :class="logoColorClasses[index]"
+          class="flex w-60 h-60 justify-center items-center rounded-icon-computer relative z-12 "
         >
-          <img :src="logo.src" :alt="logo.name" class="w-40 h-40" />
-          <div class="info"></div>
+        <img :src="logo.src" :alt="logo.name" class="w-40 h-40" />
+
+          <div :class="logoAnimationClasses[index]" class="absolute bg-green-200 h-full rounded-icon-computer w-full z-0 top-0 hover:w-[225%] hover:h-[225%]"></div>
         </div>
       </div>
       <div
@@ -70,20 +71,24 @@
               <div
                 class="w-20 h-20 bg-white rounded-full flex items-center justify-center"
               >
+              <a href="https://github.com/Eetuh123">
                 <img
                   src="@/assets/icons/github.svg"
                   alt="github"
                   class="w-16 h-16"
                 />
+              </a>
               </div>
               <div
                 class="w-20 h-20 bg-white rounded-full flex items-center justify-center"
               >
+              <a href="https://www.linkedin.com/in/eetu-huotari-594106238/">
                 <img
                   src="@/assets/icons/linkedin.svg"
                   alt="linkedin"
                   class="w-16 h-16"
                 />
+              </a>
               </div>
             </div>
           </div>
@@ -96,24 +101,28 @@
                 class="bg-dark text-white rounded-icon-computer p-10 mb-12"
                 type="email"
                 name="email"
+                placeholder="Email"
               />
               <input
                 v-model="form.name"
                 class="bg-dark text-white rounded-icon-computer p-10 mb-10"
                 type="text"
                 name="name"
+                placeholder="Name"
               />
               <input
                 v-model="form.subject"
                 class="bg-dark text-white rounded-icon-computer p-10 mb-12"
                 type="text"
                 name="subject"
+                placeholder="Subject"
               />
               <div class="flex">
                 <textarea
                   v-model="form.message"
-                  class="bg-dark text-white rounded-icon-computer p-6 mr-12 flex-1"
+                  class="bg-dark text-white rounded-icon-computer pl-10 p-6 mr-12 flex-1"
                   name="message"
+                  placeholder="Message"
                 ></textarea>
                 <input
                   type="submit"
@@ -140,8 +149,8 @@ export default {
   setup() {
     const logos = ref([]);
     const logoRefs = ref([]);
-    const logoClasses = ref([]);
-
+    const logoColorClasses = ref([]);
+    const logoAnimationClasses = ref([]);
     const form = ref({
       email: "",
       name: "",
@@ -153,14 +162,23 @@ export default {
       if (el) logoRefs.value.push(el);
     };
 
-    const calculatePositions = () => {
+    const calculateColorClasses = () => {
+      logoRefs.value.forEach((logoRef, index) => {
+        const rect = logoRef.getBoundingClientRect();
+        const midpoint = window.innerWidth / 2;
+        logoColorClasses.value[index] = rect.left + rect.width / 2 < midpoint ? "bg-white" : "bg-dark";
+      });
+    };
+
+    const calculateAnimationClasses = () => {
       logoRefs.value.forEach((logoRef, index) => {
         const rect = logoRef.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
-        logoClasses.value[index] =
-          rect.left + rect.width / 2 < viewportWidth / 2
-            ? "bg-white"
-            : "bg-dark";
+        const quarterPoint = viewportWidth / 4;
+        const threeQuarterPoint = 3 * viewportWidth / 4;
+        const isCloseToLeftEdge = rect.left + rect.width / 2 < quarterPoint;
+        const isCloseToRightEdge = rect.left + rect.width / 2 >= threeQuarterPoint;
+        logoAnimationClasses.value[index] = isCloseToLeftEdge || isCloseToRightEdge ? "hover:animate-grow left-0 hover:left-0" : "hover:animate-growreverse right-0 hover:right-0";
       });
     };
 
@@ -189,16 +207,24 @@ export default {
       logos.value.push(logo);
     });
 
+    const updateLogoClasses = () => {
+      calculateColorClasses();
+      calculateAnimationClasses();
+    };
+
     onMounted(() => {
-      window.addEventListener("resize", calculatePositions);
-      calculatePositions();
+      window.addEventListener("resize", updateLogoClasses);
+      updateLogoClasses();
     });
 
     onUnmounted(() => {
-      window.removeEventListener("resize", calculatePositions);
+      window.removeEventListener("resize", updateLogoClasses);
     });
 
-    return { logos, setLogoRef, logoClasses, sendEmail, form };
+    return { logos, setLogoRef, logoColorClasses, logoAnimationClasses, sendEmail, form };
   },
 };
 </script>
+<style scoped>
+
+</style>
