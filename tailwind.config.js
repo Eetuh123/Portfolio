@@ -12,6 +12,7 @@ module.exports = {
         },
         backgroundImage: {
             'split-half': "linear-gradient(to right, #232121 50%, #FFFFFF 50%)",
+            'split-half-reverse': "linear-gradient(to right, #FFFFFF 50%, #232121 50%)",
           },
         borderRadius: {
             'icon-computer': '3.125rem',
