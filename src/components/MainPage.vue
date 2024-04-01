@@ -174,14 +174,37 @@ export default {
       logoRefs.value.forEach((logoRef, index) => {
         const rect = logoRef.getBoundingClientRect();
         const viewportWidth = window.innerWidth;
-        const quarterPoint = viewportWidth / 4;
-        const threeQuarterPoint = 3 * viewportWidth / 4;
-        const isCloseToLeftEdge = rect.left + rect.width / 2 < quarterPoint;
-        const isCloseToRightEdge = rect.left + rect.width / 2 >= threeQuarterPoint;
-        logoAnimationClasses.value[index] = isCloseToLeftEdge || isCloseToRightEdge ? "hover:animate-grow left-0 hover:left-0" : "hover:animate-growreverse right-0 hover:right-0";
+        const midPoint = viewportWidth / 2;
+        const center = rect.left + rect.width / 2;
+
+        const threshold = viewportWidth * 0.10;
+
+        const distanceFromLeftEdge = rect.left;
+        const distanceFromRightEdge = viewportWidth - (rect.left + rect.width);
+
+        const isRightHalf = center >= midPoint;
+        const isLeftHalf = !isRightHalf;
+
+        const closeToLeftWall = distanceFromLeftEdge <= threshold;
+        const closeToRightWall = distanceFromRightEdge <= threshold;
+
+        if (isRightHalf) {
+          if (closeToRightWall) {
+            logoAnimationClasses.value[index] = "hover:animate-growreverse right-0 hover:right-0";
+          } else {
+            logoAnimationClasses.value[index] = "hover:animate-grow left-0 hover:left-0";
+          }
+        } else if (isLeftHalf) {
+          if (closeToLeftWall) {
+            logoAnimationClasses.value[index] = "hover:animate-grow left-0 hover:left-0";
+          } else {
+
+            logoAnimationClasses.value[index] = "hover:animate-growreverse right-0 hover:right-0";
+          }
+        }
       });
     };
-
+  
     const sendEmail = async () => {
       try {
         const result = await emailjs.sendForm(
