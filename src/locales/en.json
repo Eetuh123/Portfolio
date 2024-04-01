@@ -1,0 +1,58 @@
+{
+    "greeting": "Hello, I'm Eetu Huotari welcome to my portfolio page",
+    "codingtitle": "I am a passionate self-taught programmer, I have been on the path of programming for the last 3 years. I love solving problems and finding different ways to approach various challenges.",
+    "designtitle": "I am also a big fan of visual design. I greatly enjoy designing visually pleasing pages. Over the last year, I have expanded my expertise into UI/UX design.",
+    "socials": "Social media",
+    "sendemail": "Send an email",
+    "call": "Call",
+    "contact": "Contact",
+    "projects": "Projects",
+    "form":{
+        "email": "Email",
+        "name": "Name",
+        "subject": "Subject",
+        "message": "Message",
+        "send": "Send"
+    },
+    "docker": {
+        "title": "Docker",
+        "description": "Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all parts it needs, such as libraries and other dependencies, and ship it all out as one package."
+    },
+    "figma": {
+        "title": "Figma",
+        "description": "Figma is a cloud-based design tool that is similar to Sketch in functionality and features, but with big differences that make Figma better for team collaboration."
+    },
+    "github": {
+        "title": "GitHub",
+        "description": "GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere."
+    },
+    "javascript": {
+        "title": "JavaScript",
+        "description": "JavaScript is a programming language that adds interactivity to your website. This happens in games, in the behavior of responses when buttons are pressed or with data entry on forms; with dynamic styling; with animation, etc."
+    },
+    "laravel": {
+        "title": "Laravel",
+        "description": "Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling."
+    },
+    "mysql": {
+        "title": "MySQL",
+        "description": "MySQL is an open-source relational database management system. Its name is a combination of 'My', the name of co-founder Michael Widenius’s daughter, and 'SQL', the abbreviation for Structured Query Language."
+    },
+    "npm": {
+        "title": "NPM",
+        "description": "npm is the package manager for JavaScript and the world’s largest software registry. Discover packages of reusable code — and assemble them in powerful new ways."
+    },
+    "php": {
+        "title": "PHP",
+        "description": "PHP is a popular general-purpose scripting language that is especially suited to web development."
+    },
+    "tailwindcss": {
+        "title": "Tailwind CSS",
+        "description": "Tailwind CSS is a highly customizable, low-level CSS framework that gives you all of the building blocks you need to build bespoke designs without any annoying opinionated styles you have to fight to override."
+    },
+    "vue": {
+        "title": "Vue",
+        "description": "Vue is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable."
+    }
+
+  }

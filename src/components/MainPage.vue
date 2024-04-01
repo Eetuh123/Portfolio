@@ -52,20 +52,16 @@
       <div class="flex mb-40">
         <div class="w-1/3 mt-12">
           <h1 class="text-5xl text-white">
-            Hei, Olen Eetu Huotari Tervetuloa Portofolio sivulleni
+            {{ $t("greeting") }}
           </h1>
           <p class="text-3xl text-white mt-12">
-            Olen intohimoinen itseopiskellut ohjelmoija, olen ollut ohjelmoinin
-            tiellä viimeiset 3 vuotta rakastan ongelman ratkaisua ja löytää eri
-            tapoja lähestyä erilaisia pulmia
+          {{ $t("codingtitle") }}
           </p>
         </div>
         <div class="bg-black w-1/3 h-[580px] rounded-full"></div>
         <div class="w-1/3 text-3xl text-dark mt-12">
           <p>
-            Olen myös suuri visuaalisen designing ystävä nautin suuren moisesti
-            visuaalisesti nautinollisten sivujen suunitelusta Viimeisen vuoden
-            aikana olen laajentanut osaamistani UI/UX-suunnitteluun
+          {{ $t("designtitle") }}
           </p>
         </div>
       </div>
@@ -96,6 +92,9 @@
       </div>
 
       <!-- Projects section -->
+      <div class="flex items-center justify-center">
+        <p>{{ $t("projects") }}</p>
+      </div>
       <div
         class="w-full h-[860px] bg-split-half-reverse my-44 rounded-icon-computer flex"
       >
@@ -125,7 +124,7 @@
       <!-- Contact section -->
       <div class="w-full h-[800px] pb-24 flex">
         <div class="w-1/2 text-white space-y-14">
-          <h1 class="text-5xl">Yhteystiedot</h1>
+          <h1 class="text-5xl">{{ $t("contact") }}</h1>
           <div class="flex items-center">
             <img
               src="@/assets/icons/telephone.svg"
@@ -133,7 +132,7 @@
               class="w-14 h-14 mr-3"
             />
             <div class="flex flex-col">
-              <p class="text-4xl">Soita</p>
+              <p class="text-4xl">{{ $t("call") }}</p>
               <p class="text-4xl">+358 44074 2509</p>
             </div>
           </div>
@@ -144,12 +143,12 @@
               class="w-14 h-14 mr-3"
             />
             <div class="flex flex-col">
-              <p class="text-4xl">Lähetä sähköpostia</p>
+              <p class="text-4xl">{{ $t("sendemail") }}</p>
               <p class="text-4xl">contact@eetuhuotari.dev</p>
             </div>
           </div>
           <div>
-            <p class="text-4xl mb-4">Socials</p>
+            <p class="text-4xl mb-4">{{ $t("socials") }}</p>
             <div class="flex gap-6">
               <div
                 class="w-20 h-20 bg-white rounded-full flex items-center justify-center"
@@ -184,32 +183,32 @@
                 class="bg-dark text-white rounded-icon-computer p-10 mb-12"
                 type="email"
                 name="email"
-                placeholder="Email"
+                :placeholder="$t('form.email')"
               />
               <input
                 v-model="form.name"
                 class="bg-dark text-white rounded-icon-computer p-10 mb-10"
                 type="text"
                 name="name"
-                placeholder="Name"
+                :placeholder="$t('form.name')"
               />
               <input
                 v-model="form.subject"
                 class="bg-dark text-white rounded-icon-computer p-10 mb-12"
                 type="text"
                 name="subject"
-                placeholder="Subject"
+                :placeholder="$t('form.subject')"
               />
               <div class="flex">
                 <textarea
                   v-model="form.message"
                   class="bg-dark text-white rounded-icon-computer pl-10 p-6 mr-12 flex-1"
                   name="message"
-                  placeholder="Message"
+                  :placeholder="$t('form.message')"
                 ></textarea>
                 <input
                   type="submit"
-                  value="Send"
+                  :value="$t('form.send')"
                   class="flex-initial bg-dark text-white rounded-icon-computer px-10 py-20 c"
                   style="width: auto"
                 />
@@ -226,6 +225,7 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { logosData } from "@/assets/logosData.js";
 import emailjs from "@emailjs/browser";
+import i18n from '@/i18n';
 
 export default {
   name: "MainPage",
@@ -245,6 +245,7 @@ export default {
 
     function toggleLanguage() {
       isEnglish.value = !isEnglish.value;
+      i18n.global.locale = isEnglish.value ? 'en' : 'fi';
     }
 
     const setLogoRef = (el) => {
