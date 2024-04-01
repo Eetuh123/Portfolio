@@ -1,31 +1,100 @@
 <template>
   <div class="bg-split-half h-viewport">
     <div class="mx-[80px] pt-20">
-    <!-- Hero section -->
-    <div class="flex mb-40">
-      <div class="w-1/3 mt-12">
-      <h1 class="text-5xl text-white">Hei, Olen Eetu Huotari Tervetuloa Portofolio sivulleni</h1>
-      <p class="text-3xl text-white mt-12">Olen intohimoinen itseopiskellut ohjelmoija, olen ollut ohjelmoinin tiellä viimeiset 3 vuotta rakastan ongelman ratkaisua ja löytää eri tapoja lähestyä erilaisia pulmia</p>
+      <!-- Lang button holder -->
+      <div class="w-full flex justify-end items-center">
+        <div
+          class="bg-dark flex rounded-icon-computer items-center justify-center w-32 h-12 relative"
+          @click="toggleLanguage"
+        >
+          <p class="font-extrabold text-slate-100">
+            {{ isEnglish ? "ENG" : "FIN" }}
+          </p>
+          <div
+            :class="{
+              'transform-left': !isEnglish,
+              'transform-right': isEnglish,
+            }"
+            class="absolute ease-in-out duration-300 transition-transform"
+          >
+            <svg
+              width="40"
+              height="40"
+              viewBox="0 0 40 40"
+              fill="#E1E1E1"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M19.9999 4.80005C11.6052 4.80005 4.79989 11.6053 4.79989 20.0001C4.79989 28.3947 11.6052 35.2 19.9999 35.2C28.3947 35.2 35.2 28.3947 35.2 20.0001C35.2 11.6053 28.3947 4.80005 19.9999 4.80005ZM2.3999 20.0001C2.3999 10.2798 10.2797 2.40006 19.9999 2.40006C29.72 2.40006 37.6 10.2798 37.6 20.0001C37.6 29.7203 29.72 37.6 19.9999 37.6C10.2797 37.6 2.3999 29.7203 2.3999 20.0001Z"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M35.9998 21.0666H3.99988V18.9333H35.9998V21.0666Z"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M18.9331 36V4H21.0665V36H18.9331ZM27.6667 19.9999C27.6667 14.206 25.5831 8.47408 21.4983 4.68416L22.7679 3.31576C27.3057 7.52581 29.5334 13.7939 29.5334 19.9999C29.5334 26.206 27.3057 32.4741 22.7679 36.6843L21.4983 35.3157C25.5831 31.5259 27.6667 25.7939 27.6667 19.9999ZM10.6659 20C10.6659 13.803 12.821 7.53808 17.2205 3.32584L18.5114 4.67416C14.5553 8.46195 12.5326 14.197 12.5326 20C12.5326 25.803 14.5553 31.5381 18.5115 35.3259L17.2206 36.6741C12.8211 32.4619 10.6659 26.1971 10.6659 20Z"
+              />
+              <path
+                fill-rule="evenodd"
+                clip-rule="evenodd"
+                d="M19.9999 10.5547C25.7847 10.5547 31.6674 11.6244 35.6549 13.8519C36.105 14.1033 36.2661 14.6719 36.0146 15.1219C35.7634 15.5719 35.1946 15.733 34.7448 15.4816C31.145 13.4708 25.6213 12.4214 19.9999 12.4214C14.3784 12.4214 8.85468 13.4708 5.255 15.4816C4.80497 15.733 4.23639 15.5719 3.985 15.1219C3.73364 14.6719 3.89465 14.1033 4.34468 13.8519C8.33239 11.6244 14.215 10.5547 19.9999 10.5547ZM19.9999 28.9333C25.7847 28.9333 31.6674 27.8635 35.6549 25.636C36.105 25.3846 36.2661 24.816 36.0146 24.366C35.7634 23.916 35.1946 23.755 34.7448 24.0063C31.145 26.0171 25.6213 27.0667 19.9999 27.0667C14.3784 27.0667 8.85468 26.0171 5.255 24.0064C4.80497 23.755 4.23639 23.916 3.985 24.366C3.73364 24.816 3.89465 25.3846 4.34468 25.636C8.33239 27.8635 14.215 28.9333 19.9999 28.9333Z"
+              />
+            </svg>
+          </div>
+        </div>
       </div>
-            <div class=" bg-black w-1/3 h-[580px] rounded-full">      </div>
-      <div class="w-1/3 text-3xl text-dark mt-12">
-      <p>Olen myös suuri visuaalisen designing ystävä nautin suuren moisesti visuaalisesti nautinollisten sivujen suunitelusta Viimeisen vuoden aikana olen laajentanut osaamistani UI/UX-suunnitteluun</p>
+      <!-- Hero section -->
+      <div class="flex mb-40">
+        <div class="w-1/3 mt-12">
+          <h1 class="text-5xl text-white">
+            Hei, Olen Eetu Huotari Tervetuloa Portofolio sivulleni
+          </h1>
+          <p class="text-3xl text-white mt-12">
+            Olen intohimoinen itseopiskellut ohjelmoija, olen ollut ohjelmoinin
+            tiellä viimeiset 3 vuotta rakastan ongelman ratkaisua ja löytää eri
+            tapoja lähestyä erilaisia pulmia
+          </p>
+        </div>
+        <div class="bg-black w-1/3 h-[580px] rounded-full"></div>
+        <div class="w-1/3 text-3xl text-dark mt-12">
+          <p>
+            Olen myös suuri visuaalisen designing ystävä nautin suuren moisesti
+            visuaalisesti nautinollisten sivujen suunitelusta Viimeisen vuoden
+            aikana olen laajentanut osaamistani UI/UX-suunnitteluun
+          </p>
+        </div>
       </div>
-    </div>
-    <!-- Logos section -->
-      <div class="flex flex-wrap justify-start items-center w-full gap-14 mb-32">
+      <!-- Logos section -->
+      <div
+        class="flex flex-wrap justify-start items-center w-full gap-14 mb-32"
+      >
         <div
           v-for="(logo, index) in logos"
           :key="index"
           :ref="setLogoRef"
           :class="logoColorClasses[index]"
-          class="flex w-60 h-60 justify-center items-center rounded-icon-computer relative z-10 z-40"
+          class="flex w-60 h-60 justify-center items-center rounded-icon-computer relative"
         >
-        <img :src="logo.src" :alt="logo.name" class="w-40 h-40" />
-
-          <div :class="[logoAnimationClasses[index], logoColorClasses[index]]" class="absolute h-full rounded-icon-computer w-full z-0 top-0 hover:w-[225%] hover:h-[225%]"></div>
+          <img
+            :src="logo.src"
+            :alt="logo.name"
+            class="pointer-events-none w-40 h-40 z-10"
+          />
+          <div
+            :class="[logoAnimationClasses[index], logoColorClasses[index]]"
+            class="absolute h-full rounded-icon-computer w-full top-0 hover:w-[225%] hover:h-[165%]"
+          ></div>
+          <div class="absolute z-20 bottom-[-24px]">
+            <p>{{ logo.name }}</p>
+          </div>
         </div>
       </div>
+
       <!-- Projects section -->
       <div
         class="w-full h-[860px] bg-split-half-reverse my-44 rounded-icon-computer flex"
@@ -85,24 +154,24 @@
               <div
                 class="w-20 h-20 bg-white rounded-full flex items-center justify-center"
               >
-              <a href="https://github.com/Eetuh123">
-                <img
-                  src="@/assets/icons/github.svg"
-                  alt="github"
-                  class="w-16 h-16"
-                />
-              </a>
+                <a href="https://github.com/Eetuh123">
+                  <img
+                    src="@/assets/icons/github.svg"
+                    alt="github"
+                    class="w-16 h-16"
+                  />
+                </a>
               </div>
               <div
                 class="w-20 h-20 bg-white rounded-full flex items-center justify-center"
               >
-              <a href="https://www.linkedin.com/in/eetu-huotari-594106238/">
-                <img
-                  src="@/assets/icons/linkedin.svg"
-                  alt="linkedin"
-                  class="w-16 h-16"
-                />
-              </a>
+                <a href="https://www.linkedin.com/in/eetu-huotari-594106238/">
+                  <img
+                    src="@/assets/icons/linkedin.svg"
+                    alt="linkedin"
+                    class="w-16 h-16"
+                  />
+                </a>
               </div>
             </div>
           </div>
@@ -172,6 +241,12 @@ export default {
       message: "",
     });
 
+    const isEnglish = ref(false);
+
+    function toggleLanguage() {
+      isEnglish.value = !isEnglish.value;
+    }
+
     const setLogoRef = (el) => {
       if (el) logoRefs.value.push(el);
     };
@@ -180,7 +255,8 @@ export default {
       logoRefs.value.forEach((logoRef, index) => {
         const rect = logoRef.getBoundingClientRect();
         const midpoint = window.innerWidth / 2;
-        logoColorClasses.value[index] = rect.left + rect.width / 2 < midpoint ? "bg-white" : "bg-dark";
+        logoColorClasses.value[index] =
+          rect.left + rect.width / 2 < midpoint ? "bg-white" : "bg-dark";
       });
     };
 
@@ -191,7 +267,7 @@ export default {
         const midPoint = viewportWidth / 2;
         const center = rect.left + rect.width / 2;
 
-        const threshold = viewportWidth * 0.10;
+        const threshold = viewportWidth * 0.1;
 
         const distanceFromLeftEdge = rect.left;
         const distanceFromRightEdge = viewportWidth - (rect.left + rect.width);
@@ -204,21 +280,24 @@ export default {
 
         if (isRightHalf) {
           if (closeToRightWall) {
-            logoAnimationClasses.value[index] = "hover:animate-growreverse right-0 hover:right-0";
+            logoAnimationClasses.value[index] =
+              "hover:animate-growreverse right-0 hover:right-0 ease-in duration-300";
           } else {
-            logoAnimationClasses.value[index] = "hover:animate-grow left-0 hover:left-0";
+            logoAnimationClasses.value[index] =
+              "hover:animate-grow left-0 hover:left-0 ease-in duration-300";
           }
         } else if (isLeftHalf) {
           if (closeToLeftWall) {
-            logoAnimationClasses.value[index] = "hover:animate-grow left-0 hover:left-0";
+            logoAnimationClasses.value[index] =
+              "hover:animate-grow left-0 hover:left-0 ease-in duration-300";
           } else {
-
-            logoAnimationClasses.value[index] = "hover:animate-growreverse right-0 hover:right-0";
+            logoAnimationClasses.value[index] =
+              "hover:animate-growreverse right-0 hover:right-0 ease-in duration-300";
           }
         }
       });
     };
-  
+
     const sendEmail = async () => {
       try {
         const result = await emailjs.sendForm(
@@ -258,10 +337,27 @@ export default {
       window.removeEventListener("resize", updateLogoClasses);
     });
 
-    return { logos, setLogoRef, logoColorClasses, logoAnimationClasses, sendEmail, form };
+    return {
+      logos,
+      setLogoRef,
+      logoColorClasses,
+      logoAnimationClasses,
+      sendEmail,
+      form,
+      toggleLanguage,
+      isEnglish,
+    };
   },
 };
 </script>
 <style scoped>
-
+.transition-transform {
+  transition: transform 0.3s ease-in-out;
+}
+.transform-left {
+  transform: translateX(-100%) rotate(0deg);
+}
+.transform-right {
+  transform: translateX(100%) rotate(360deg);
+}
 </style>
