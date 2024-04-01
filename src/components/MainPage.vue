@@ -1,19 +1,32 @@
 <template>
   <div class="bg-split-half h-viewport">
-    <div class="mx-[80px]">
-      <div class="flex flex-wrap justify-start items-center w-full gap-14">
+    <div class="mx-[80px] pt-20">
+    <!-- Hero section -->
+    <div class="flex mb-40">
+      <div class="w-1/3 mt-12">
+      <h1 class="text-5xl text-white">Hei, Olen Eetu Huotari Tervetuloa Portofolio sivulleni</h1>
+      <p class="text-3xl text-white mt-12">Olen intohimoinen itseopiskellut ohjelmoija, olen ollut ohjelmoinin tiellä viimeiset 3 vuotta rakastan ongelman ratkaisua ja löytää eri tapoja lähestyä erilaisia pulmia</p>
+      </div>
+            <div class=" bg-black w-1/3 h-[580px] rounded-full">      </div>
+      <div class="w-1/3 text-3xl text-dark mt-12">
+      <p>Olen myös suuri visuaalisen designing ystävä nautin suuren moisesti visuaalisesti nautinollisten sivujen suunitelusta Viimeisen vuoden aikana olen laajentanut osaamistani UI/UX-suunnitteluun</p>
+      </div>
+    </div>
+    <!-- Logos section -->
+      <div class="flex flex-wrap justify-start items-center w-full gap-14 mb-32">
         <div
           v-for="(logo, index) in logos"
           :key="index"
           :ref="setLogoRef"
           :class="logoColorClasses[index]"
-          class="flex w-60 h-60 justify-center items-center rounded-icon-computer relative z-12 "
+          class="flex w-60 h-60 justify-center items-center rounded-icon-computer relative z-10 z-40"
         >
         <img :src="logo.src" :alt="logo.name" class="w-40 h-40" />
 
-          <div :class="logoAnimationClasses[index]" class="absolute bg-green-200 h-full rounded-icon-computer w-full z-0 top-0 hover:w-[225%] hover:h-[225%]"></div>
+          <div :class="[logoAnimationClasses[index], logoColorClasses[index]]" class="absolute h-full rounded-icon-computer w-full z-0 top-0 hover:w-[225%] hover:h-[225%]"></div>
         </div>
       </div>
+      <!-- Projects section -->
       <div
         class="w-full h-[860px] bg-split-half-reverse my-44 rounded-icon-computer flex"
       >
@@ -33,13 +46,14 @@
             feugiat vitae. Aenean non pharetra libero. Etiam at libero a lorem
           </p>
         </div>
-        <div class="bg-green-500 w-1/2 p-14 h-4/5">
+        <div class="w-1/2 p-14 h-5/6">
           <img class="fill" src="@/assets/Picture3.jpg" />
           <div>
-            <p class="text-4xl">Kuva</p>
+            <p class="text-4xl">Tecnologiota kättetty</p>
           </div>
         </div>
       </div>
+      <!-- Contact section -->
       <div class="w-full h-[800px] pb-24 flex">
         <div class="w-1/2 text-white space-y-14">
           <h1 class="text-5xl">Yhteystiedot</h1>

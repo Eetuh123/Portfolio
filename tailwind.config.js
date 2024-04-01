@@ -28,8 +28,8 @@ module.exports = {
             },
         },
         animation: {
-            'grow': 'grow 0.4s linear',
-            'growreverse': 'growReverse 0.4s linear',
+            'grow': 'grow 0.2s linear',
+            'growreverse': 'growReverse 0.2s linear',
         },
       },
     },
