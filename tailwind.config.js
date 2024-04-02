@@ -3,6 +3,9 @@ module.exports = {
     darkMode: false,
     theme: {
       extend: {
+        fontFamily: {
+          'raleway': ['Raleway', 'sans-serif'],
+        },
         colors: {
             'white': '#ffffff',
             'dark': '#232121',

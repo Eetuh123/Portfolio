@@ -1,6 +1,7 @@
 <template>
-  <div class="bg-split-half h-viewport">
+  <div class="bg-split-half h-viewport font-raleway">
     <div class="mx-[80px] pt-20">
+
       <!-- Lang button holder -->
       <div class="w-full flex justify-end items-center cursor-pointer">
         <div
@@ -48,6 +49,7 @@
           </div>
         </div>
       </div>
+
       <!-- Hero section -->
       <div class="flex mb-40">
         <div class="w-1/3 mt-12">
@@ -65,9 +67,10 @@
           </p>
         </div>
       </div>
+
       <!-- Logos section -->
       <div
-        class="flex flex-wrap justify-start items-center w-full gap-14 mb-32"
+        class="flex flex-wrap justify-start items-center w-full gap-14 mb-56"
       >
         <div
           v-for="(logo, index) in logos"
@@ -128,10 +131,10 @@
 
       <!-- Projects section -->
       <div class="flex items-center justify-center">
-        <p>{{ $t("projects") }}</p>
+                <h1 class="text-6xl">{{ $t("projects") }}</h1>
       </div>
-      <div class="flex">
-        <div @click="prevSlide()" class="cursor-pointer">
+      <div class="flex items-center">
+        <div @click="prevSlide()" class="cursor-pointer mr-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="35"
@@ -146,7 +149,7 @@
           </svg>
         </div>
         <div
-          class="w-full h-[800px] bg-split-half-reverse my-44 rounded-icon-computer flex"
+          class="w-full h-[800px] bg-split-half-reverse my-14 rounded-icon-computer flex"
         >
           <div class="p-12 w-1/2">
             <h1 class="mb-8">
@@ -161,11 +164,11 @@
           <div class="w-1/2 px-14 pt-32">
             <img class="pb-2" src="@/assets/Picture3.jpg" />
             <div>
-              <p class="text-4xl">{{ $t("project.name") }}</p>
+              <p class="text-4xl">{{ $t("toolsused") }}</p>
             </div>
           </div>
         </div>
-        <div @click="nextSlide()" class="cursor-pointer">
+        <div @click="nextSlide()" class="cursor-pointer ml-3">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="35"
@@ -180,8 +183,9 @@
           </svg>
         </div>
       </div>
+
       <!-- Contact section -->
-      <div class="w-full h-[800px] pb-24 flex">
+      <div class="w-full h-[800px] mt-44 pb-24 flex">
         <div class="w-1/2 text-white space-y-14">
           <h1 class="text-5xl">{{ $t("contact") }}</h1>
           <div class="flex items-center">
@@ -276,6 +280,7 @@
           </div>
         </div>
       </div>
+      
     </div>
   </div>
 </template>

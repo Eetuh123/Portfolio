@@ -7,6 +7,7 @@
     "call": "Call",
     "contact": "Contact",
     "projects": "Projects",
+    "toolsused": "Tools I used",
     "moder": {
         "name": "Moder",
         "description": "Moder is a web application that allows users to create and share their own quizzes. The application is built with Laravel and Vue.js. The application is designed to be user-friendly and easy to use. The application is still in development and new features are added regularly."
