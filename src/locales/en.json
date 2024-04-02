@@ -7,6 +7,18 @@
     "call": "Call",
     "contact": "Contact",
     "projects": "Projects",
+    "moder": {
+        "name": "Moder",
+        "description": "Moder is a web application that allows users to create and share their own quizzes. The application is built with Laravel and Vue.js. The application is designed to be user-friendly and easy to use. The application is still in development and new features are added regularly."
+    },
+    "kvh": {
+        "name": "KVH",
+        "description": "Moder is a web application that allows users to create and share their own quizzes. The application is built with Laravel and Vue.js. The application is designed to be user-friendly and easy to use. The application is still in development and new features are added regularly."
+    },
+    "more": {
+        "name": "More projects coming soon",
+        "description": "I'm currently working on new projects and will be adding them to my portfolio soon. Stay tuned for more updates!"
+    },
     "form":{
         "email": "Email",
         "name": "Name",
@@ -54,5 +66,4 @@
         "title": "Vue",
         "description": "Vue is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable."
     }
-
   }

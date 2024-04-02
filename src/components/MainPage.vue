@@ -2,7 +2,7 @@
   <div class="bg-split-half h-viewport">
     <div class="mx-[80px] pt-20">
       <!-- Lang button holder -->
-      <div class="w-full flex justify-end items-center">
+      <div class="w-full flex justify-end items-center cursor-pointer">
         <div
           class="bg-dark flex rounded-icon-computer items-center justify-center w-32 h-12 relative"
           @click="toggleLanguage"
@@ -97,14 +97,20 @@
               class="relative h-full flex w-full justify-center opacity-0 z-10 pointer-events-none"
             >
               <div
-                v-if="logoAnimationClasses[index] == `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`"
+                v-if="
+                  logoAnimationClasses[index] ==
+                  `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
+                "
                 class="w-1/2 flex pl-10 pt-8 text-lg"
               >
                 {{ $t(`${logo.name}.description`) }}
               </div>
-              <div class="w-1/2"> </div>
+              <div class="w-1/2"></div>
               <div
-                v-if="logoAnimationClasses[index] !== `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`"
+                v-if="
+                  logoAnimationClasses[index] !==
+                  `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
+                "
                 class="w-1/2 flex pr-6 pt-8 text-lg"
               >
                 <p>{{ $t(`${logo.name}.description`) }}</p>
@@ -124,30 +130,54 @@
       <div class="flex items-center justify-center">
         <p>{{ $t("projects") }}</p>
       </div>
-      <div
-        class="w-full h-[860px] bg-split-half-reverse my-44 rounded-icon-computer flex"
-      >
-        <div class="p-14 w-1/2">
-          <h1 class="mb-8"><span class="text-5xl">Modder</span></h1>
-          <p class="text-4xl">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus
-            vestibulum lacus id arcu pulvinar cursus. Fusce vel bibendum tellus.
-            Integer a mauris vitae nulla convallis auctor eget ut urna. Nam
-            pretium, sapien et aliquam blandit, orci erat volutpat diam, vel
-            finibus magna massa sed arcu. Etiam eleifend suscipit posuere.
-            Curabitur nibh ipsum, lacinia a felis a, iaculis porta augue. In id
-            eleifend ex, aliquam ultrices augue. Nulla mattis varius felis eu
-            tempor. Sed a nisl sed ante viverra bibendum blandit id est. Integer
-            sodales sapien id cursus interdum. In et sem ut metus auctor tempus
-            cursus et est. Vestibulum congue gravida sapien, non dictum magna
-            feugiat vitae. Aenean non pharetra libero. Etiam at libero a lorem
-          </p>
+      <div class="flex">
+        <div @click="prevSlide()" class="cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="40"
+            viewBox="0 0 35 40"
+            fill="none"
+          >
+            <path
+              d="M3.5 26.0622C-1.16667 23.3679 -1.16667 16.6321 3.5 13.9378L24.5 1.81347C29.1667 -0.880836 35 2.48704 35 7.87564L35 32.1244C35 37.513 29.1667 40.8808 24.5 38.1865L3.5 26.0622Z"
+              fill="white"
+            />
+          </svg>
         </div>
-        <div class="w-1/2 p-14 h-5/6">
-          <img class="fill" src="@/assets/Picture3.jpg" />
-          <div>
-            <p class="text-4xl">Tecnologiota kättetty</p>
+        <div
+          class="w-full h-[800px] bg-split-half-reverse my-44 rounded-icon-computer flex"
+        >
+          <div class="p-12 w-1/2">
+            <h1 class="mb-8">
+              <span class="text-5xl">{{
+                $t(`${projectData[SlideIndex].translationKey}.name`)
+              }}</span>
+            </h1>
+            <p class="text-4xl">
+              {{ $t(`${projectData[SlideIndex].translationKey}.description`) }}
+            </p>
           </div>
+          <div class="w-1/2 px-14 pt-32">
+            <img class="pb-2" src="@/assets/Picture3.jpg" />
+            <div>
+              <p class="text-4xl">{{ $t("project.name") }}</p>
+            </div>
+          </div>
+        </div>
+        <div @click="nextSlide()" class="cursor-pointer">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="35"
+            height="40"
+            viewBox="0 0 35 40"
+            fill="none"
+          >
+            <path
+              d="M31.5 13.9378C36.1667 16.6321 36.1667 23.3679 31.5 26.0622L10.5 38.1865C5.83333 40.8808 0 37.513 0 32.1244V7.87564C0 2.48704 5.83333 -0.880835 10.5 1.81347L31.5 13.9378Z"
+              fill="#232121"
+            />
+          </svg>
         </div>
       </div>
       <!-- Contact section -->
@@ -253,6 +283,7 @@
 <script>
 import { ref, onMounted, onUnmounted } from "vue";
 import { logosData } from "@/assets/logosData.js";
+import { projectData } from "@/assets/projectData.js";
 import emailjs from "@emailjs/browser";
 import i18n from "@/i18n";
 
@@ -264,6 +295,7 @@ export default {
     const logoRefs = ref([]);
     const logoColorClasses = ref([]);
     const logoAnimationClasses = ref([]);
+    const SlideIndex = ref(0);
     const hoveredIndex = ref(null);
     const form = ref({
       email: "",
@@ -327,12 +359,29 @@ export default {
         }
       });
     };
+
     const handleMouseEnter = (index) => {
       hoveredIndex.value = index;
     };
 
     const handleMouseLeave = () => {
       hoveredIndex.value = null;
+    };
+
+    const nextSlide = () => {
+      if (SlideIndex.value < projectData.length - 1) {
+        SlideIndex.value++;
+      } else {
+        SlideIndex.value = 0;
+      }
+    };
+
+    const prevSlide = () => {
+      if (SlideIndex.value > 0) {
+        SlideIndex.value--;
+      } else {
+        SlideIndex.value = projectData.length - 1;
+      }
     };
 
     const sendEmail = async () => {
@@ -386,6 +435,10 @@ export default {
       handleMouseEnter,
       handleMouseLeave,
       hoveredIndex,
+      nextSlide,
+      prevSlide,
+      projectData,
+      SlideIndex,
     };
   },
 };
