@@ -46,7 +46,7 @@
         "title": "PHP",
         "description": "PHP is a popular general-purpose scripting language that is especially suited to web development."
     },
-    "tailwindcss": {
+    "tailwindCSS": {
         "title": "Tailwind CSS",
         "description": "Tailwind CSS is a highly customizable, low-level CSS framework that gives you all of the building blocks you need to build bespoke designs without any annoying opinionated styles you have to fight to override."
     },

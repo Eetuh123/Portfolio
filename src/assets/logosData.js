@@ -41,7 +41,7 @@ export const logosData = [
 },
 {
     src: 'logos/TailwindCSS.svg',
-    name: 'Tailwindcss',
+    name: 'tailwindcss',
     translationKey: 'tailwindcss'
 },
 {

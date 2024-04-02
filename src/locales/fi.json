@@ -46,7 +46,7 @@
         "title": "PHP",
         "description": "PHP on yleiskäyttöinen ohjelmointikieli, joka on suunniteltu erityisesti web-sovellusten kehittämiseen. PHP on yksi maailman suosituimmista ohjelmointikielistä ja sitä käytetään laajasti sekä etu- että takapääkehityksessä."
     },
-    "tailwindcss": {
+    "tailwindCSS": {
         "title": "Tailwind CSS",
         "description": "Tailwind CSS on CSS-kehyksen, joka on suunniteltu helpottamaan responsiivisten web-sovellusten kehittämistä. Tailwind CSS tarjoaa valmiita tyylejä, joita voit käyttää suoraan HTML-tiedostoissasi, mikä tekee siitä yhden suosituimmista CSS-kehyksistä web-kehittäjien keskuudessa."
     },

@@ -55,13 +55,13 @@
             {{ $t("greeting") }}
           </h1>
           <p class="text-3xl text-white mt-12">
-          {{ $t("codingtitle") }}
+            {{ $t("codingtitle") }}
           </p>
         </div>
         <div class="bg-black w-1/3 h-[580px] rounded-full"></div>
         <div class="w-1/3 text-3xl text-dark mt-12">
           <p>
-          {{ $t("designtitle") }}
+            {{ $t("designtitle") }}
           </p>
         </div>
       </div>
@@ -74,19 +74,48 @@
           :key="index"
           :ref="setLogoRef"
           :class="logoColorClasses[index]"
-          class="flex w-60 h-60 justify-center items-center rounded-icon-computer relative"
+          class="flex w-60 h-60 justify-center items-center rounded-icon-computer relative pt-12 flex-col"
+          @mouseenter="handleMouseEnter(index)"
+          @mouseleave="handleMouseLeave"
         >
           <img
             :src="logo.src"
             :alt="logo.name"
+            :class="{ 'z-30': hoveredIndex === index }"
             class="pointer-events-none w-40 h-40 z-10"
           />
           <div
-            :class="[logoAnimationClasses[index], logoColorClasses[index]]"
+            :class="[
+              logoAnimationClasses[index],
+              logoColorClasses[index],
+              { 'hover:z-20': hoveredIndex === index },
+            ]"
             class="absolute h-full rounded-icon-computer w-full top-0 hover:w-[225%] hover:h-[165%]"
-          ></div>
-          <div class="absolute z-20 bottom-[-24px]">
-            <p>{{ logo.name }}</p>
+          >
+            <div
+              :class="{ 'z-30 opacity-100': hoveredIndex === index }"
+              class="relative h-full flex w-full justify-center opacity-0 z-10 pointer-events-none"
+            >
+              <div
+                v-if="logoAnimationClasses[index] == `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`"
+                class="w-1/2 flex pl-10 pt-8 text-lg"
+              >
+                {{ $t(`${logo.name}.description`) }}
+              </div>
+              <div class="w-1/2"> </div>
+              <div
+                v-if="logoAnimationClasses[index] !== `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`"
+                class="w-1/2 flex pr-6 pt-8 text-lg"
+              >
+                <p>{{ $t(`${logo.name}.description`) }}</p>
+              </div>
+            </div>
+          </div>
+          <div
+            :class="{ 'z-30 opacity-100': hoveredIndex === index }"
+            class="opacity-0 z-10 pointer-events-none"
+          >
+            <h1 class="text-4xl">{{ $t(`${logo.name}.title`) }}</h1>
           </div>
         </div>
       </div>
@@ -225,15 +254,17 @@
 import { ref, onMounted, onUnmounted } from "vue";
 import { logosData } from "@/assets/logosData.js";
 import emailjs from "@emailjs/browser";
-import i18n from '@/i18n';
+import i18n from "@/i18n";
 
 export default {
   name: "MainPage",
   setup() {
+    const isEnglish = ref(false);
     const logos = ref([]);
     const logoRefs = ref([]);
     const logoColorClasses = ref([]);
     const logoAnimationClasses = ref([]);
+    const hoveredIndex = ref(null);
     const form = ref({
       email: "",
       name: "",
@@ -241,11 +272,9 @@ export default {
       message: "",
     });
 
-    const isEnglish = ref(false);
-
     function toggleLanguage() {
       isEnglish.value = !isEnglish.value;
-      i18n.global.locale = isEnglish.value ? 'en' : 'fi';
+      i18n.global.locale = isEnglish.value ? "en" : "fi";
     }
 
     const setLogoRef = (el) => {
@@ -298,6 +327,13 @@ export default {
         }
       });
     };
+    const handleMouseEnter = (index) => {
+      hoveredIndex.value = index;
+    };
+
+    const handleMouseLeave = () => {
+      hoveredIndex.value = null;
+    };
 
     const sendEmail = async () => {
       try {
@@ -347,6 +383,9 @@ export default {
       form,
       toggleLanguage,
       isEnglish,
+      handleMouseEnter,
+      handleMouseLeave,
+      hoveredIndex,
     };
   },
 };
