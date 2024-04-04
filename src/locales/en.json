@@ -21,6 +21,7 @@
         "description": "I'm currently working on new projects and will be adding them to my portfolio soon. Stay tuned for more updates!"
     },
     "form":{
+        "formtitle": "Contact me",
         "email": "Email",
         "name": "Name",
         "subject": "Subject",
