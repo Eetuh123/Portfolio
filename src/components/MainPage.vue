@@ -1,9 +1,10 @@
 <template>
   <div
     ref="mainPageRef"
-    class="main-page bg-split-half h-viewport font-raleway overflow-x-hidden"
+    class="bg-split-half font-raleway overflow-x-hidden"
   >
-    <div class="mx-[80px] pt-20">
+    <div class="mx-[2.5%] xl:mx-[5%] pt-20">
+      <div class="bg-zinc-500 w-1/2"></div>
       <!-- Lang button holder -->
       <div class="w-full flex justify-end items-center cursor-pointer">
         <div
@@ -64,86 +65,169 @@
         </div>
         <div class="bg-black w-1/3 h-[580px] rounded-full"></div>
         <div class="w-1/3 text-3xl text-dark mt-12">
-          <p>
+          <h1 class="text-5xl text-white">
+            {{ $t("greeting") }}
+          </h1>
+          <p class="mt-12">
             {{ $t("designtitle") }}
           </p>
         </div>
       </div>
 
       <!-- Logos section -->
-      <div
-        class="flex flex-wrap justify-start items-center w-full gap-14 mb-56"
-      >
+      <div class="w-full flex gap-10">
+        <!-- Logos on Left -->
         <div
-          v-for="(logo, index) in logos"
-          :key="index"
-          :ref="setLogoRef"
-          :class="logoColorClasses[index]"
-          class="flex w-60 h-60 justify-center items-center rounded-icon-computer relative pt-12 flex-col"
-          @mouseenter="handleMouseEnter(index)"
-          @mouseleave="handleMouseLeave"
+          class="flex flex-wrap justify-start flex-row-reverse items-center w-1/2 gap-4 xl:gap-8 xl:gap-14 mb-56"
         >
-          <img
-            :src="logo.src"
-            :alt="logo.name"
-            :class="{
-              'z-30 scale-[1.02]': hoveredIndex === index,
-            }"
-            class="pointer-events-none z-10"
-          />
           <div
-            :class="[
-              logoAnimationClasses[index],
-              logoColorClasses[index],
-              { 'hover:z-20': hoveredIndex === index },
-            ]"
-            class="absolute h-full rounded-icon-computer w-full top-0 hover:w-[223.5%] hover:h-[165%]"
+            v-for="(logo, index) in leftLogos"
+            :key="`left-${index}`"
+            :ref="setLogoRef"
+            class="flex h-28 w-28 md:w-40 md:h-40 lg:w-48 xl:w-60 lg:h-48 xl:h-60 justify-center items-center rounded-small-icon-computer md:rounded-icon-computer relative pt-12 flex-col bg-white text-dark"
+            @mouseenter="handleMouseEnter(index, 'left')"
+            @mouseleave="handleMouseLeave"
           >
-            <div
+            <img
+              :src="logo.src"
+              :alt="logo.name"
               :class="{
-                'z-30 duration-1000 opacity-100': hoveredIndex === index,
+                'z-30 scale-[1.05]':
+                  hoveredLogo.index === index && hoveredLogo.side === 'left',
               }"
-              class="relative h-full flex w-full justify-center opacity-0 z-10 pointer-events-none transition-opacity"
+              class="pointer-events-none z-10 h-20 w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
+            />
+            <div
+              :class="[
+                leftLogoAnimationClasses[index],
+                {
+                  'hover:z-20':
+                    hoveredLogo.index === index && hoveredLogo.side === 'left',
+                },
+              ]"
+              class="absolute h-full rounded-medium-icon-computer lg:rounded-icon-computer w-full top-0 hover:w-[223.5%] hover:h-[165%] bg-white"
             >
               <div
-                v-if="
-                  logoAnimationClasses[index] ==
-                  `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
-                "
-                class="w-1/2 flex pl-10 pt-8 text-lg"
+                :class="{
+                  'z-30 duration-1000 opacity-100':
+                    hoveredLogo.index === index && hoveredLogo.side === 'left',
+                }"
+                class="relative h-full flex w-full justify-center opacity-0 z-10 pointer-events-none transition-opacity"
               >
-                {{ $t(`${logo.name}.description`) }}
-              </div>
-              <div class="w-1/2"></div>
-              <div
-                v-if="
-                  logoAnimationClasses[index] !==
-                  `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
-                "
-                class="w-1/2 flex pr-6 pt-8 text-lg"
-              >
-                <p>{{ $t(`${logo.name}.description`) }}</p>
+                <div
+                  v-if="
+                    leftLogoAnimationClasses[index] ==
+                    `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
+                  "
+                  class="w-1/2 flex pl-10 pt-8 text-lg"
+                >
+                  {{ $t(`${logo.name}.description`) }}
+                </div>
+                <div class="w-1/2"></div>
+                <div
+                  v-if="
+                    leftLogoAnimationClasses[index] !==
+                    `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
+                  "
+                  class="w-1/2 flex pr-6 pt-8 text-lg"
+                >
+                  <p>{{ $t(`${logo.name}.description`) }}</p>
+                </div>
               </div>
             </div>
+            <div
+              :class="{
+                'z-30 duration-1000 opacity-100':
+                  hoveredLogo.index === index && hoveredLogo.side === 'left',
+              }"
+              class="opacity-0 z-10 pointer-events-none transition-opacity text-center"
+            >
+              <h1 class="text-4xl">{{ $t(`${logo.name}.title`) }}</h1>
+            </div>
           </div>
+        </div>
+        <!-- Logos on Right -->
+        <div
+          class="flex flex-wrap justify-start items-center w-1/2 gap-4 xl:gap-8 xl:gap-14 mb-56"
+        >
           <div
-            :class="{
-              'z-30 duration-1000 opacity-100': hoveredIndex === index,
-            }"
-            class="opacity-0 z-10 pointer-events-none transition-opacity"
+            v-for="(logo, index) in rightLogos"
+            :key="`right-${index}`"
+            :ref="setLogoRef"
+            class="flex h-28 w-28 md:w-40 md:h-40 lg:w-48 xl:w-60 lg:h-48 xl:h-60 justify-center items-center rounded-small-icon-computer md:rounded-icon-computer relative pt-12 flex-col bg-dark text-white"
+            @mouseenter="handleMouseEnter(index, 'right')"
+            @mouseleave="handleMouseLeave"
           >
-            <h1 class="text-4xl">{{ $t(`${logo.name}.title`) }}</h1>
+            <img
+              :src="logo.src"
+              :alt="logo.name"
+              :class="{
+                'z-30 scale-[1.05]':
+                  hoveredLogo.index === index && hoveredLogo.side === 'right',
+              }"
+              class="pointer-events-none z-10 h-20 w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
+            />
+            <div
+              :class="[
+                rightLogoAnimationClasses[index],
+                {
+                  'hover:z-20':
+                    hoveredLogo.index === index && hoveredLogo.side === 'right',
+                },
+              ]"
+              class="absolute h-full rounded-medium-icon-computer lg:rounded-icon-computer w-full top-0 hover:w-[223.5%] hover:h-[165%] bg-dark"
+            >
+              <div
+                :class="{
+                  'z-30 duration-1000 opacity-100':
+                    hoveredLogo.index === index && hoveredLogo.side === 'right',
+                }"
+                class="relative h-full flex w-full justify-center opacity-0 z-10 pointer-events-none transition-opacity"
+              >
+                <div
+                  v-if="
+                    rightLogoAnimationClasses[index] ==
+                    `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
+                  "
+                  class="w-1/2 flex pl-10 pt-8 text-lg"
+                >
+                  {{ $t(`${logo.name}.description`) }}
+                </div>
+                <div class="w-1/2"></div>
+                <div
+                  v-if="
+                    rightLogoAnimationClasses[index] !==
+                    `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
+                  "
+                  class="w-1/2 flex pr-6 pt-8 text-lg"
+                >
+                  <p>{{ $t(`${logo.name}.description`) }}</p>
+                </div>
+              </div>
+            </div>
+            <div
+              :class="{
+                'z-30 duration-1000 opacity-100':
+                  hoveredLogo.index === index && hoveredLogo.side === 'right',
+              }"
+              class="opacity-0 z-10 pointer-events-none transition-opacity text-center"
+            >
+              <h1 class="text-4xl">{{ $t(`${logo.name}.title`) }}</h1>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Projects section -->
-      <div class="flex items-center justify-center">
+      <div class="flex items-center justify-center mb-14">
         <h1 class="text-6xl">{{ $t("projects") }}</h1>
       </div>
-      <div class="flex items-center relative">
+      <div class="flex items-center justify-center relative">
         <!-- SwitchButton -->
-        <div @click="prevSlide()" class="cursor-pointer mr-3 animate-bounce z-10">
+        <div
+          @click="prevSlide()"
+          class="cursor-pointer mr-3 animate-bounce z-10"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="35"
@@ -159,55 +243,66 @@
           </svg>
         </div>
         <!-- Card -->
-        <div class="w-full relative">
-        <div
-          class="w-full h-[800px] bg-split-half-reverse my-14 rounded-icon-computer flex z-10"
-          :style="realSlideStyle"
-          @transitionend="resetTransition"
-        >
-          <div class="p-12 w-1/2">
-            <h1 class="mb-8">
-              <span class="text-5xl">{{
-                $t(`${projectData[SlideIndex].translationKey}.name`)
-              }}</span>
-            </h1>
-            <p class="text-4xl">
-              {{ $t(`${projectData[SlideIndex].translationKey}.description`) }}
-            </p>
-          </div>
-          <div class="w-1/2 px-14 pt-32">
-            <img class="pb-4" src="@/assets/Picture3.jpg" />
-            <div>
-              <p class="text-4xl text-white">{{ $t("toolsused") }}</p>
+        <div class="w-full lg:ml-0 relative h-[840px] 2xl:h-[800px] lg:h-[700px] md:w-3/4 lg:w-full">
+          <div
+            class="flex m-auto w-full h-full bg-transparent flex-col flex lg:flex-row md:w-5/6 lg:w-full lg:w-full z-10 invisible"
+            :style="realSlideStyle"
+            @transitionend="resetTransition"
+          >
+            <div class="p-12 lg:w-1/2 h-1/2 lg:h-full flex flex-col text-center lg:text-start bg-white rounded-project-card-top lg:rounded-project-card-left">
+              <h1 class="mb-8">
+                <span class="text-2xl lg:text-3xl lg:text-4xl 2xl:text-5xl text-center">{{
+                  $t(`${projectData[SlideIndex].translationKey}.name`)
+                }}</span>
+              </h1>
+              <p class="text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+                {{
+                  $t(`${projectData[SlideIndex].translationKey}.description`)
+                }}
+              </p>
+            </div>
+            <div class="flex flex-col h-1/2 lg:h-full lg:w-1/2 px-14 lg:px-6 xl:px-14 lg:pt-28 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right ">
+              <img class="pb-4 h-3/4 lg:h-4/6 xl:h-3/4" src="@/assets/Picture3.jpg" />
+              <div>
+                <p class="text-3xl 2xl:text-4xl text-white">{{ $t("toolsused") }}</p>
+              </div>
             </div>
           </div>
-        </div>
-        <!-- Animation Card -->
-        <div
-          class="h-[800px] w-full bg-split-half-reverse my-14 rounded-icon-computer absolute inset-0 flex z-0"
-          @transitionend="resetTransition"
-          ref="fakeCardElement"
-        >
-          <div class="p-12 w-1/2 flex flex-col">
-            <h1 class="mb-8">
-              <span class="text-5xl">{{
-                $t(`${projectData[SlideIndex].translationKey}.name`)
-              }}</span>
-            </h1>
-            <p class="text-4xl">
-              {{ $t(`${projectData[SlideIndex].translationKey}.description`) }}
-            </p>
-          </div>
-          <div class="w-1/2 px-14 pt-32 flex flex-col justify-start">
-            <img class="pb-4" src="@/assets/Picture3.jpg" />
-            <div>
-              <p class="text-4xl text-white">{{ $t("toolsused") }}</p>
+          <!-- Animation Card -->
+
+          <div
+            class="flex m-auto flex-col lg:flex-row h-full 2xl:h-[800px] lg:h-[700px] md:w-5/6 lg:w-full bg-transparent absolute inset-0  z-0"
+            @transitionend="resetTransition"
+            ref="fakeCardElement"
+          >
+            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full p-12 text-center lg:text-start bg-white text-dark rounded-project-card-top lg:rounded-project-card-left">
+              <h1 class="mb-8">
+                <span class="text-2xl lg:text-3xl lg:text-4xl 2xl:text-5xl text-center font-semibold">{{
+                  $t(`${projectData[AnimationCardIndex].translationKey}.name`)
+                }}</span>
+              </h1>
+              <p class="text-xl lg:text-2xl lg:text-3xl 2xl:text-4xl">
+                {{
+                  $t(
+                    `${projectData[AnimationCardIndex].translationKey}.description`
+                  )
+                }}
+              </p>
+            </div>
+            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-14 lg:px-6 xl:px-14 lg:pt-28 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right">
+              <img class="pb-4 w-full h-3/4 lg:h-4/6 xl:h-3/4" src="@/assets/Picture3.jpg" />
+              <div>
+                <p class="text-3xl 2xl:text-4xl  text-white">{{ $t("toolsused") }}</p>
+              </div>
             </div>
           </div>
-        </div>
+
         </div>
         <!-- SwitchButton -->
-        <div @click="nextSlide()" class="cursor-pointer ml-3 animate-bounce z-10">
+        <div
+          @click="nextSlide()"
+          class="cursor-pointer ml-3 animate-bounce z-10"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="35"
@@ -225,63 +320,63 @@
       </div>
 
       <!-- Contact section -->
-      <div class="w-full h-[900px] mt-44 pb-36 flex">
-        <div class="w-1/2 text-white space-y-14">
-          <h1 class="text-5xl">{{ $t("contact") }}</h1>
+      <div class="w-full lg:h-[1300px] mt-44 lg:pb-36 flex flex-col md:flex-row">
+        <div class="md:w-1/2 text-white space-y-14 order-2 md:order-1 bg-dark w-screen md:py-auto pb-24 md:pb-0">
+          <h1 class="mt-8 text-4xl 2xl:text-5xl">{{ $t("contact") }}</h1>
           <div class="flex items-center">
             <img
               src="@/assets/icons/telephone.svg"
               alt="phone"
-              class="w-14 h-14 mr-3"
+              class="w-12 h-12 lg:w-14 lg:h-14 mr-3"
             />
             <div class="flex flex-col">
-              <p class="text-4xl">{{ $t("call") }}</p>
+              <p class="text-2xl lg:text-3xl 2xl:text-4xl">{{ $t("call") }}</p>
               <a
                 :href="`tel:+358440742509`"
-                class="text-4xl underline underline-offset-8 duration-100 transition:font hover:font-medium"
+                class="text-2xl lg:text-3xl 2xl:text-4xl underline underline-offset-8 duration-100 transition:font hover:font-medium"
               >
                 +358 44074 2509
               </a>
             </div>
           </div>
-          <div class="flex items-center">
+          <div class="flex items-center md:pb-24">
             <img
               src="@/assets/icons/envelope.svg"
               alt="envelope"
-              class="w-14 h-14 mr-3"
+              class="w-12 h-12 lg:w-14 lg:h-14 mr-3"
             />
             <div class="flex flex-col">
-              <p class="text-4xl">{{ $t("sendemail") }}</p>
+              <p class="text-2xl lg:text-3xl 2xl:text-4xl">{{ $t("sendemail") }}</p>
               <a
                 href="mailto:contact@eetuhuotari.dev"
-                class="text-4xl underline underline-offset-8 decoration-white duration-100 transition:font hover:font-medium"
+                class="text-2xl lg:text-3xl 2xl:text-4xl underline underline-offset-8 decoration-white duration-100 transition:font hover:font-medium"
               >
                 contact@eetuhuotari.dev
               </a>
             </div>
           </div>
           <div>
-            <p class="text-4xl mb-4">{{ $t("socials") }}</p>
+            <p class="text-3xl 2xl:text-4xl mb-4">{{ $t("socials") }}</p>
             <div class="flex gap-6">
               <div
-                class="w-20 h-20 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-scale duration-300"
+                class="w-16 h-16 2xl:w-20 2xl:h-20 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-scale duration-300"
               >
                 <a href="https://github.com/Eetuh123">
                   <img
                     src="@/assets/icons/github.svg"
                     alt="github"
-                    class="w-16 h-16 hover:scale-110 transition-scale duration-300"
+                    class="w-12 h-12 2xl:w-16 2xl:h-16 hover:scale-110 transition-scale duration-300"
                   />
                 </a>
               </div>
               <div
-                class="w-20 h-20 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-scale duration-300"
+                class="w-16 h-16 2xl:w-20 2xl:h-20 bg-white rounded-full flex items-center justify-center hover:scale-110 transition-scale duration-300"
               >
                 <a href="https://www.linkedin.com/in/eetu-huotari-594106238/">
                   <img
                     src="@/assets/icons/linkedin.svg"
                     alt="linkedin"
-                    class="w-16 h-16 hover:scale-110 transition-scale duration-300"
+                    class="w-12 h-12 2xl:w-16 2xl:h-16 hover:scale-110 transition-scale duration-300"
                   />
                 </a>
               </div>
@@ -290,44 +385,44 @@
         </div>
 
         <!-- Email form -->
-        <div class="w-1/2 flex flex-col">
-          <div class="w-full pl-12">
-            <div class="pl-7 pb-12 text-5xl">
-              <h1>{{ $t("form.formtitle") }}</h1>
+        <div class="md:w-1/2 flex flex-col order-1 md:order-2">
+          <div class="w-full md:pl-12 mt-8 pb-24">
+            <div class="pl-7 pb-12 text-4xl 2xl:text-5xl">
+              <h1 class="md:text-dark text-white ">{{ $t("form.formtitle") }}</h1>
             </div>
             <form class="flex flex-col" @submit.prevent="sendEmail">
               <input
                 v-model="form.email"
-                class="bg-dark text-white rounded-icon-computer p-10 mb-10 font-semibold text-lg"
+                class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2"
                 type="email"
                 name="email"
                 :placeholder="$t('form.email')"
               />
               <input
                 v-model="form.name"
-                class="bg-dark text-white rounded-icon-computer p-10 mb-10 font-semibold text-lg"
+                class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2"
                 type="text"
                 name="name"
                 :placeholder="$t('form.name')"
               />
               <input
                 v-model="form.subject"
-                class="bg-dark text-white rounded-icon-computer p-10 mb-10 font-semibold text-lg"
+                class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2"
                 type="text"
                 name="subject"
                 :placeholder="$t('form.subject')"
               />
-              <div class="flex">
+              <div class="flex flex-col lg:flex-row">
                 <textarea
                   v-model="form.message"
-                  class="bg-dark text-white rounded-icon-computer pl-10 p-6 mr-12 flex-1 font-semibold text-lg"
+                  class="bg-dark text-white rounded-icon-computer p-4 xl2:p-6 pl-10 lg:mr-4 lg:mr-8 pb-24 lg:0 mb-10 lg:mb-0 flex-1 font-semibold 2xl:text-lg border-2"
                   name="message"
                   :placeholder="$t('form.message')"
                 ></textarea>
                 <input
                   type="submit"
                   :value="$t('form.send')"
-                  class="flex-initial bg-dark text-white rounded-icon-computer px-10 py-20 font-bold cursor-pointer"
+                  class="flex-initial bg-dark text-white border-2 border-white rounded-icon-computer px-8 xl2:px-10 py-6 lg:py-20 font-bold cursor-pointer hover:bg-white hover:border-dark hover:text-dark transition-colors duration-300"
                   style="width: auto"
                 />
               </div>
@@ -340,7 +435,7 @@
 </template>
 
 <script>
-import { ref, onMounted, onUnmounted, computed} from "vue";
+import { ref, onMounted, onUnmounted, computed, nextTick } from "vue";
 import { logosData } from "@/assets/logosData.js";
 import { projectData } from "@/assets/projectData.js";
 import emailjs from "@emailjs/browser";
@@ -351,13 +446,16 @@ export default {
   setup() {
     const isEnglish = ref(false);
     const logos = ref([]);
+    const leftLogos = ref([]);
+    const rightLogos = ref([]);
     const logoRefs = ref([]);
-    const logoColorClasses = ref([]);
-    const logoAnimationClasses = ref([]);
+    const leftLogoAnimationClasses = ref([]);
+    const rightLogoAnimationClasses = ref([]);
+    const hoveredLogo = ref({ index: null, side: null });
     const SlideIndex = ref(0);
+    const AnimationCardIndex = ref(0);
     const transitioning = ref(false);
     const direction = ref("next");
-    const hoveredIndex = ref(null);
     const fakeCardElement = ref(null);
     const form = ref({
       email: "",
@@ -367,8 +465,11 @@ export default {
     });
 
     onMounted(() => {
-      window.addEventListener("resize", updateLogoClasses);
-      updateLogoClasses();
+      updateLogoArrays();
+      window.addEventListener("resize", calculateAnimationClasses);
+      nextTick().then(() => {
+        calculateAnimationClasses();
+      });
     });
 
     function toggleLanguage() {
@@ -376,19 +477,14 @@ export default {
       i18n.global.locale = isEnglish.value ? "en" : "fi";
     }
 
-    const setLogoRef = (el) => {
-      if (el) logoRefs.value.push(el);
+    const updateLogoArrays = () => {
+      const midpoint = Math.ceil(logos.value.length / 2);
+      leftLogos.value = logos.value.slice(0, midpoint);
+      rightLogos.value = logos.value.slice(midpoint);
     };
 
-    const calculateColorClasses = () => {
-      logoRefs.value.forEach((logoRef, index) => {
-        const rect = logoRef.getBoundingClientRect();
-        const midpoint = window.innerWidth / 2;
-        logoColorClasses.value[index] =
-          rect.left + rect.width / 2 < midpoint
-            ? "bg-white text-dark"
-            : "bg-dark text-white";
-      });
+    const setLogoRef = (el) => {
+      if (el) logoRefs.value.push(el);
     };
 
     const calculateAnimationClasses = () => {
@@ -398,7 +494,7 @@ export default {
         const midPoint = viewportWidth / 2;
         const center = rect.left + rect.width / 2;
 
-        const threshold = viewportWidth * 0.1;
+        const threshold = viewportWidth * 0.2;
 
         const distanceFromLeftEdge = rect.left;
         const distanceFromRightEdge = viewportWidth - (rect.left + rect.width);
@@ -409,33 +505,45 @@ export default {
         const closeToLeftWall = distanceFromLeftEdge <= threshold;
         const closeToRightWall = distanceFromRightEdge <= threshold;
 
-        if (isRightHalf) {
-          if (closeToRightWall) {
-            logoAnimationClasses.value[index] =
-              "hover:animate-growreverse right-0 hover:right-0 ease-in duration-300";
-          } else {
-            logoAnimationClasses.value[index] =
-              "hover:animate-grow left-0 hover:left-0 ease-in duration-300";
-          }
-        } else if (isLeftHalf) {
+        if (isLeftHalf) {
           if (closeToLeftWall) {
-            logoAnimationClasses.value[index] =
+            leftLogoAnimationClasses.value[index] =
               "hover:animate-grow left-0 hover:left-0 ease-in duration-300";
           } else {
-            logoAnimationClasses.value[index] =
+            leftLogoAnimationClasses.value[index] =
               "hover:animate-growreverse right-0 hover:right-0 ease-in duration-300";
+          }
+        } else if (isRightHalf) {
+          index = index - leftLogos.value.length;
+          if (closeToRightWall) {
+            rightLogoAnimationClasses.value[index] =
+              "hover:animate-growreverse right-0 hover:right-0 ease-in duration-300";
+          } else {
+            rightLogoAnimationClasses.value[index] =
+              "hover:animate-grow left-0 hover:left-0 ease-in duration-300";
           }
         }
       });
     };
 
-    const handleMouseEnter = (index) => {
-      hoveredIndex.value = index;
-    };
+    const logosContext = require.context("@/assets/logos", false, /\.svg$/);
+    logosContext.keys().forEach((key) => {
+      const fileName = key.replace("./", "").replace(".svg", "");
+      const logo = {
+        src: logosContext(key),
+        name: fileName,
+        ...logosData.find((logo) => logo.name === fileName),
+      };
+      logos.value.push(logo);
+    });
 
-    const handleMouseLeave = () => {
-      hoveredIndex.value = null;
-    };
+    function handleMouseEnter(index, side) {
+      hoveredLogo.value = { index, side };
+    }
+
+    function handleMouseLeave() {
+      hoveredLogo.value = { index: null, side: null };
+    }
 
     const getNextSlideIndex = (current, direction, length) => {
       if (direction === "next") {
@@ -448,11 +556,16 @@ export default {
     const nextSlide = () => {
       if (transitioning.value) return;
       direction.value = "next";
-      fakeCardElement.value.style.transition = 'none';
-      fakeCardElement.value.style.transform = 'translateX(-120%)';
+      fakeCardElement.value.style.transition = "none";
+      fakeCardElement.value.style.transform = "translateX(-160%)";
+      AnimationCardIndex.value = getNextSlideIndex(
+        AnimationCardIndex.value,
+        "next",
+        projectData.length
+      );
       requestAnimationFrame(() => {
-        fakeCardElement.value.style.transition = 'transform 2s ease';
-        fakeCardElement.value.style.transform = 'translateX(0%)';
+        fakeCardElement.value.style.transition = "transform 2s ease";
+        fakeCardElement.value.style.transform = "translateX(0%)";
       });
       transitioning.value = true;
     };
@@ -460,34 +573,35 @@ export default {
     const prevSlide = () => {
       if (transitioning.value) return;
       direction.value = "prev";
-      fakeCardElement.value.style.transition = 'none';
-      fakeCardElement.value.style.transform = 'translateX(120%)';
+      fakeCardElement.value.style.transition = "none";
+      fakeCardElement.value.style.transform = "translateX(160%)";
+      AnimationCardIndex.value = getNextSlideIndex(
+        AnimationCardIndex.value,
+        "prev",
+        projectData.length
+      );
+
       requestAnimationFrame(() => {
-        fakeCardElement.value.style.transition = 'transform 2s ease';
-        fakeCardElement.value.style.transform = 'translateX(0%)';
+        fakeCardElement.value.style.transition = "transform 2s ease";
+        fakeCardElement.value.style.transform = "translateX(0%)";
       });
       transitioning.value = true;
+    };
+
+    const resetTransition = () => {
+      SlideIndex.value = AnimationCardIndex.value;
+      transitioning.value = false;
     };
 
     const realSlideStyle = computed(() => {
       if (!transitioning.value) return {};
       return {
         transform:
-          direction.value === "next" ? "translateX(120%)" : "translateX(-120%)",
+          direction.value === "next" ? "translateX(160%)" : "translateX(-160%)",
         transition: "transform 2s ease",
+        visibility: 'visible',
       };
     });
-
-
-    
-    const resetTransition = () => {
-      SlideIndex.value = getNextSlideIndex(
-        SlideIndex.value,
-        direction.value,
-        projectData.length
-      );
-      transitioning.value = false;
-    };
 
     const sendEmail = async () => {
       try {
@@ -503,38 +617,25 @@ export default {
       }
     };
 
-    const logosContext = require.context("@/assets/logos", false, /\.svg$/);
-    logosContext.keys().forEach((key) => {
-      const fileName = key.replace("./", "").replace(".svg", "");
-      const logo = {
-        src: logosContext(key),
-        name: fileName,
-        ...logosData.find((logo) => logo.name === fileName),
-      };
-      logos.value.push(logo);
-    });
-
-    const updateLogoClasses = () => {
-      calculateColorClasses();
-      calculateAnimationClasses();
-    };
-
     onUnmounted(() => {
-      window.removeEventListener("resize", updateLogoClasses);
+      window.removeEventListener("resize", calculateAnimationClasses);
     });
 
     return {
       logos,
+      leftLogos,
+      rightLogos,
       setLogoRef,
-      logoColorClasses,
-      logoAnimationClasses,
+      leftLogoAnimationClasses,
+      rightLogoAnimationClasses,
       sendEmail,
       form,
       toggleLanguage,
       isEnglish,
       handleMouseEnter,
       handleMouseLeave,
-      hoveredIndex,
+      hoveredLogo,
+      AnimationCardIndex,
       SlideIndex,
       nextSlide,
       prevSlide,

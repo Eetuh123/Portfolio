@@ -17,11 +17,20 @@ module.exports = {
             50: '50%',
         },
         backgroundImage: {
-            'split-half': "linear-gradient(to right, #232121 50%, #FFFFFF 50%)",
-            'split-half-reverse': "linear-gradient(to right, #FFFFFF 50%, #232121 50%)",
+            'split-half': "linear-gradient(to right, #232121 50.05%, #FFFFFF 50.05%)",
+            'split-half-reverse': "linear-gradient(to right, #FFFFFF 50.05%, #232121 50.05%)",
           },
         borderRadius: {
             'icon-computer': '3.125rem',
+            'medium-icon-computer': '2.5rem',
+            'small-icon-computer': '1.875rem',
+            'project-card-top': '3.125rem 3.125rem 0rem 0rem',
+            'project-card-left': '3.125rem 0rem 0rem 3.125rem',
+            'project-card-right': '0rem 3.125rem 3.125rem 0rem',
+            'project-card-bottom': '0rem 0rem 3.125rem 3.125rem',
+        },
+        screens: {
+          'phone': '400px',
         },
         keyframes: {
             grow: {
@@ -55,8 +64,8 @@ module.exports = {
             'bounce': 'bounce 3s infinite linear',
             'right': 'right 1s forwards',
             'left': 'left 1s forwards',
-
         },
+
       },
     },
     variants: {
