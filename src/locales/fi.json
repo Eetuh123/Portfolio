@@ -1,24 +1,26 @@
 {
-    "greeting": "Hei, Olen Eetu Huotari Tervetuloa Portofolio sivulleni",
-    "codingtitle": "Olen intohimoinen itseopiskellut ohjelmoija, olen ollut ohjelmoinin tiellä viimeiset 3 vuotta rakastan ongelman ratkaisua ja löytää eri tapoja lähestyä erilaisia pulmia",
-    "designtitle": "Olen myös suuri visuaalisen designing ystävä nautin suuren moisesti visuaalisesti nautinollisten sivujen suunitelusta Viimeisen vuoden aikana olen laajentanut osaamistani UI/UX-suunnitteluun",
+    "greeting": "Hei, Olen Eetu Huotari Tervetuloa Portofoliooni",
+    "coding": "Coding",
+    "design": "Design",
+    "codingtitle": "Olen intohimoinen itseoppinut ohjelmoija, joka on viettänyt viimeiset kolme vuotta ohjelmoinnin parissa. Rakastan ongelmien ratkaisemista ja uusien lähestymistapojen löytämistä erilaisiin haasteisiin.",
+    "designtitle": "Olen myös innokas visuaalisen suunnittelun ystävä, joka nauttii visuaalisesti miellyttävien sivujen luomisesta. Viimeisen vuoden aikana olen syventänyt osaamistani UI/UX-suunnittelun alueella.",
     "socials": "Sosiaaliset Mediat",
     "sendemail": "Lähetä sähköpostia",
     "call": "Soita",
     "contact": "Yhteystiedot",
-    "projects": "Projektit",
+    "projects": "Projects i have worked on",
     "toolsused": "Käytetyt työkalut",
     "moder": {
         "name": "Moder",
-        "description": "Aloittaessani Moderissa harjoittelijana korkea koulun sijasta ilman aiempaa kokemusta, sain mahdollisuuden perehtyä web-kehityksen maailmaan ensisijaisesti. Kahden vuoden aikana sain arvokasta kokemusta ja kehitin osaamistani useiden teknologioiden parissa, kuten Vue, Laravel, MySQL, Tailwind CSS, ja virtuaalikoneet. Tämä monipuolinen kokemus on antanut minulle vankan pohja ymmärryksen web-sovellusten kehittämisen."
+        "description": "Aloittaessani Moderissa harjoittelijana korkeakoulun sijasta ilman aiempaa kokemusta, sain mahdollisuuden perehtyä ensisijaisesti web-kehityksen maailmaan. Kahden vuoden aikana sain arvokasta kokemusta ja kehitin osaamistani useiden teknologioiden parissa, kuten Vue, Laravel, MySQL, Tailwind CSS, ja virtuaalikoneet. Tämä kokemus on antanut minulle vankan pohjan web-sovellusten kehittämiseen."
     },
     "kvh": {
         "name": "KVH",
-        "description": "Aloittaessani Moderissa harjoittelijana korkea koulun sijasta ilman aiempaa kokemusta, sain mahdollisuuden perehtyä web-kehityksen maailmaan ensisijaisesti. Kahden vuoden aikana sain arvokasta kokemusta ja kehitin osaamistani useiden teknologioiden parissa, kuten Vue, Laravel, MySQL, Tailwind CSS, ja virtuaalikoneet. Tämä monipuolinen kokemus on antanut minulle vankan pohja ymmärryksen web-sovellusten kehittämisen."
+        "description": "On ensimäinen kunnon Web design projecti jossa sain mahdollisuuden suunnitella ja toteuttaa sivuston alusta loppuun. Sivusto on suuniteltu Figmalla rakenettu Vuella ja Tailwindillä se käyttäen Email.Js kirjastoa lähettämään sähköposteja. Sivusto on suuniteltu ja rakennettu yhteistyössä KVH:n kanssa"
     },
     "more": {
-        "name": "More projects coming soon",
-        "description": "I'm currently working on new projects and will be adding them to my portfolio soon. Stay tuned for more updates!"
+        "name": "Lisää tulossa",
+        "description": "Olen työskentelemässä tällä hetkellä uuden projektin parissa joka on tulossa pian."
     },
     "form":{
         "formtitle": "Ota yhteyttä",
@@ -30,42 +32,42 @@
     },
     "docker": {
         "title": "Docker",
-        "description": "Docker on avoimen lähdekoodin alusta, joka auttaa kehittäjiä ja järjestelmänvalvojia rakentamaan, toimittamaan ja suorittamaan sovelluksia. Dockerin avulla voit eristää sovelluksesi riippumatta siitä, missä se suoritetaan, ja pakata sovelluksesi yhtenä siirrettävänä pakettina, joka sisältää kaiken tarvittavan sen suorittamiseen."
+        "description": "Kevyt virtuaalikone, sovellusten käyttöön ja sujuvaan toimintaan erilaisissa ympäristöissä. Se helpottaa ohjelmien siirtoa, käyttöä eri tietokoneilla"
     },
     "figma": {
         "title": "Figma",
-        "description": "Figma on yhteistyöhön ja prototyyppien luomiseen tarkoitettu vektorigrafiikkatyökalu. Se toimii selaimessa ja mahdollistaa useiden käyttäjien samanaikaisen työskentelyn samassa dokumentissa. Figma on suosittu työkalu käyttöliittymäsuunnittelijoiden keskuudessa."
+        "description": "Verkkopohjainen UI/UX-suunnittelutyökalu, käytetään prototyyppien luomiseen ja käyttöliittymän testaukseen ennen implementointia."
     },
     "github": {
         "title": "GitHub",
-        "description": "GitHub on ohjelmistokehittäjien yhteistyöalusta, joka perustuu Git-versionhallintaan. GitHub tarjoaa monia ominaisuuksia, kuten seurannan, haaran, kysymysten ja vetopyyntöjen hallinnan, joiden avulla kehittäjät voivat työskennellä yhdessä tehokkaasti."
+        "description": "Kattava versionhallinta- ja yhteistyöalusta ohjelmistokehitykseen, joka mahdollistaa koodin jakamisen, seuraamisen, yhteistyön parantamisen ja versionhallinnan."
     },
     "javascript": {
         "title": "JavaScript",
-        "description": "JavaScript on ohjelmointikieli, joka on suunniteltu verkkosivujen ja web-sovellusten kehittämiseen. JavaScript on yksi maailman suosituimmista ohjelmointikielistä ja sitä käytetään laajasti sekä etu- että takapääkehityksessä."
+        "description": "Monipuolinen ohjelmointikieli, jota käytetään verkkosivuissa yleensä frontend-kielenä, mutta myös backend-sovelluksissa Node.js:n kautta"
     },
     "laravel": {
         "title": "Laravel",
-        "description": "Laravel on PHP-ohjelmointikielellä kirjoitettu web-sovelluskehys, joka on suunniteltu helpottamaan web-sovellusten kehittämistä. Laravel tarjoaa monia ominaisuuksia, kuten reititys, mallit, näkymät ja tietokantakyselyt, joiden avulla voit rakentaa tehokkaita ja turvallisia web-sovelluksia nopeasti."
+        "description": "PHP-kehys moderneihin web-sovelluksiin, joka tarjoaa laajan valikoiman työkaluja ja kirjastoja nopeaan, turvalliseen ja ylläpidettävään kehitykseen."
     },
     "mysql": {
         "title": "MySQL",
-        "description": "MySQL on avoimen lähdekoodin tietokantajärjestelmä, joka on suunniteltu erityisesti web-sovellusten käyttöön. MySQL on yksi maailman suosituimmista tietokannoista ja sitä käytetään laajasti sekä pienissä että suurissa web-sovelluksissa."
+        "description": "Avoimen lähdekoodin tietokantaohjelmisto, jota käytetään tiedon säilyttämiseen siirtämieen ja manipuloitiin verkkosivuilla ja -sovelluksissa."
     },
     "npm": {
         "title": "NPM",
-        "description": "NPM on Node.js-pakettien hallintajärjestelmä, joka on suunniteltu helpottamaan JavaScript-kehittäjien työtä. npm tarjoaa yli miljoona pakettia, jotka voit ladata ja käyttää projekteissasi, mikä tekee siitä yhden suosituimmista pakettien hallintajärjestelmistä JavaScript-kehittäjien keskuudessa."
+        "description": "JavaScript-pakettien hallintajärjestelmä, käytetään pakettien jakamiseen ja riippuvuuksien hallintaan Node.js-projekteissa."
     },
     "php": {
         "title": "PHP",
-        "description": "PHP on yleiskäyttöinen ohjelmointikieli, joka on suunniteltu erityisesti web-sovellusten kehittämiseen. PHP on yksi maailman suosituimmista ohjelmointikielistä ja sitä käytetään laajasti sekä etu- että takapääkehityksessä."
+        "description": "Backend-kielenä jota käytetään dynaamisten web-sivustojen ja -sovellusten kehittämisen, joka tarjoaa työkalut tietokantasovellusten integrointiin ja datan käsittelyyn."
     },
     "tailwindCSS": {
         "title": "Tailwind",
-        "description": "Tailwind CSS on CSS-kehyksen, joka on suunniteltu helpottamaan responsiivisten web-sovellusten kehittämistä. Tailwind CSS tarjoaa valmiita tyylejä, joita voit käyttää suoraan HTML-tiedostoissasi, mikä tekee siitä yhden suosituimmista CSS-kehyksistä web-kehittäjien keskuudessa."
+        "description": "Css kehys joka nopeuttaa/helpottaa verkkosivujen tyyllittelyä. Se sujuvoittaa kehitysprosessia tarjoamalla valmiita tyylejä ja responsiivisa ratkaisuja"
     },
     "vue": {
         "title": "Vue.js",
-        "description": "Vue.js on JavaScript-ohjelmointikielellä kirjoitettu web-sovelluskehys, joka on suunniteltu helpottamaan web-sovellusten kehittämistä. Vue.js tarjoaa monia ominaisuuksia, kuten komponentit, reititys ja tilanhallinta, joiden avulla voit rakentaa tehokkaita ja dynaamisia web-sovelluksia nopeasti."
+        "description": "JavaScript-pohjainen kehys, jota käytetään front-end kehityksessä, mahdollistaen dynaamisten ja reaktiivisten verkkosivujen sekä rakentamisen."
     }
   }

@@ -3,7 +3,7 @@
     ref="mainPageRef"
     class="bg-split-half font-raleway overflow-x-hidden"
   >
-    <div class="mx-[2.5%] xl:mx-[5%] pt-20">
+    <div class="mx-[2.5%] xl:mx-[5%] pt-10 lg:pt-20">
       <div class="bg-zinc-500 w-1/2"></div>
       <!-- Lang button holder -->
       <div class="w-full flex justify-end items-center cursor-pointer">
@@ -54,37 +54,47 @@
       </div>
 
       <!-- Hero section -->
-      <div class="flex mb-40">
-        <div class="w-1/3 mt-12">
-          <h1 class="text-5xl text-white">
+      <div class="flex-col md:flex-row flex mb-40">
+        <div class="md:w-1/3 mt-12 order-2 md:order-1 text-white">
+        <div>
+          <h1 class="text-5xl pt-10 px-6 md:pr-6 md:pl-0">
             {{ $t("greeting") }}
           </h1>
-          <p class="text-3xl text-white mt-12">
+        </div>
+          <div class="bg-dark rounded-tiny-icon-computer border-white border-2 md:border-none">
+          <h1 class="text-5xl pt-10 px-6 md:pr-6 md:pl-0">
+            {{ $t("coding") }}
+          </h1>
+          <p class="text-3xl pt-6 pb-10 px-6 md:pr-6 md:pl-0">
             {{ $t("codingtitle") }}
           </p>
+          </div>
         </div>
-        <div class="bg-black w-1/3 h-[580px] rounded-full"></div>
-        <div class="w-1/3 text-3xl text-dark mt-12">
-          <h1 class="text-5xl text-white">
-            {{ $t("greeting") }}
+        <div class="bg-split-half-reverse md:w-[580px] h-[580px] rounded-full order-1 md:order-2"></div>
+        <div class="md:w-1/3 text-3xl text-dark mt-8 order-3 bg-white rounded-tiny-icon-computer text-end border-dark border-2 md:border-none">
+          <h1 class="text-5xl pt-10 px-6 md:pl-6 md:pr-0">
+            {{ $t("design") }}
           </h1>
-          <p class="mt-12">
+          <p class="pt-6 pb-10 px-6 md:pl-6 md:pr-0">
             {{ $t("designtitle") }}
           </p>
         </div>
       </div>
 
       <!-- Logos section -->
-      <div class="w-full flex gap-10">
+      <div class="flex items-center justify-center mb-14">
+        <h1 class="text-6xl text-center">{{ $t("projects") }}</h1>
+      </div>
+      <div class="w-full flex gap-4 phone:gap-6 md:gap-10">
         <!-- Logos on Left -->
         <div
-          class="flex flex-wrap justify-start flex-row-reverse items-center w-1/2 gap-4 xl:gap-8 xl:gap-14 mb-56"
+          class="flex flex-wrap justify-start flex-row-reverse items-center w-1/2 gap-2 xl:gap-8 xl:gap-14 mb-56"
         >
           <div
             v-for="(logo, index) in leftLogos"
             :key="`left-${index}`"
             :ref="setLogoRef"
-            class="flex h-28 w-28 md:w-40 md:h-40 lg:w-48 xl:w-60 lg:h-48 xl:h-60 justify-center items-center rounded-small-icon-computer md:rounded-icon-computer relative pt-12 flex-col bg-white text-dark"
+            class="flex justify-center items-center w-20 h-20 phone:h-28 phone:w-28 md:w-40 md:h-40 lg:w-48 xl:w-60 lg:h-48 xl:h-60 rounded-tiny-icon-computer phone:rounded-small-icon-computer md:rounded-icon-computer relative flex-col bg-white text-dark"
             @mouseenter="handleMouseEnter(index, 'left')"
             @mouseleave="handleMouseLeave"
           >
@@ -95,7 +105,7 @@
                 'z-30 scale-[1.05]':
                   hoveredLogo.index === index && hoveredLogo.side === 'left',
               }"
-              class="pointer-events-none z-10 h-20 w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
+              class="pointer-events-none z-10 h-12 w-12 phone:h-20 phone:w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
             />
             <div
               :class="[
@@ -105,7 +115,7 @@
                     hoveredLogo.index === index && hoveredLogo.side === 'left',
                 },
               ]"
-              class="absolute h-full rounded-medium-icon-computer lg:rounded-icon-computer w-full top-0 hover:w-[223.5%] hover:h-[165%] bg-white"
+              class="absolute h-full rounded-phone-icon-computer phone:rounded-small-icon-computer md:rounded-medium-icon-computer lg:rounded-icon-computer w-full top-0 hover:w-[270px] phone:hover:w-[300px] md:hover:w-[215%] hover:h-[300px] phone:hover:h-[300px] md:hover:h-[165%] bg-white"
             >
               <div
                 :class="{
@@ -119,7 +129,7 @@
                     leftLogoAnimationClasses[index] ==
                     `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
                   "
-                  class="w-1/2 flex pl-10 pt-8 text-lg"
+                  class="w-2/3 phone:w-1/2 text-clip flex pb-4 pl-5 phone:pl-10 pt-4 lg:pt-8 text-base md:text-md lg:text-xl xl:text-2xl"
                 >
                   {{ $t(`${logo.name}.description`) }}
                 </div>
@@ -129,7 +139,7 @@
                     leftLogoAnimationClasses[index] !==
                     `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
                   "
-                  class="w-1/2 flex pr-6 pt-8 text-lg"
+                  class="w-2/3 md:w-1/2 text-clip flex flex pb-4 pr-4 lg:pr-6 pt-4 lg:pt-8 text-base md:text-md lg:text-xl xl:text-2xl"
                 >
                   <p>{{ $t(`${logo.name}.description`) }}</p>
                 </div>
@@ -140,21 +150,21 @@
                 'z-30 duration-1000 opacity-100':
                   hoveredLogo.index === index && hoveredLogo.side === 'left',
               }"
-              class="opacity-0 z-10 pointer-events-none transition-opacity text-center"
+              class="opacity-0 z-10 pointer-events-none transition-opacity absolute top-[85%] xl:top-[90%]"
             >
-              <h1 class="text-4xl">{{ $t(`${logo.name}.title`) }}</h1>
+              <h1 class="font-semibold phone:text-2xl xl:text-4xl">{{ $t(`${logo.name}.title`) }}</h1>
             </div>
           </div>
         </div>
         <!-- Logos on Right -->
         <div
-          class="flex flex-wrap justify-start items-center w-1/2 gap-4 xl:gap-8 xl:gap-14 mb-56"
+          class="flex flex-wrap justify-start items-center w-1/2 gap-2 xl:gap-8 xl:gap-14 mb-56"
         >
           <div
             v-for="(logo, index) in rightLogos"
             :key="`right-${index}`"
             :ref="setLogoRef"
-            class="flex h-28 w-28 md:w-40 md:h-40 lg:w-48 xl:w-60 lg:h-48 xl:h-60 justify-center items-center rounded-small-icon-computer md:rounded-icon-computer relative pt-12 flex-col bg-dark text-white"
+            class="flex justify-center items-center w-20 h-20 phone:h-28 phone:w-28 md:w-40 md:h-40 lg:w-48 xl:w-60 lg:h-48 xl:h-60 rounded-tiny-icon-computer phone:rounded-small-icon-computer md:rounded-icon-computer relative flex-col bg-dark text-white"
             @mouseenter="handleMouseEnter(index, 'right')"
             @mouseleave="handleMouseLeave"
           >
@@ -165,7 +175,7 @@
                 'z-30 scale-[1.05]':
                   hoveredLogo.index === index && hoveredLogo.side === 'right',
               }"
-              class="pointer-events-none z-10 h-20 w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
+              class="pointer-events-none z-10 h-12 w-12 phone:h-20 phone:w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
             />
             <div
               :class="[
@@ -175,7 +185,7 @@
                     hoveredLogo.index === index && hoveredLogo.side === 'right',
                 },
               ]"
-              class="absolute h-full rounded-medium-icon-computer lg:rounded-icon-computer w-full top-0 hover:w-[223.5%] hover:h-[165%] bg-dark"
+              class="absolute h-full rounded-phone-icon-computer phone:rounded-small-icon-computer md:rounded-medium-icon-computer lg:rounded-icon-computer w-full top-0 hover:w-[270px] phone:hover:w-[300px] md:hover:w-[215%] hover:h-[300px] phone:hover:h-[300px] md:hover:h-[165%] bg-dark"
             >
               <div
                 :class="{
@@ -189,7 +199,7 @@
                     rightLogoAnimationClasses[index] ==
                     `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
                   "
-                  class="w-1/2 flex pl-10 pt-8 text-lg"
+                  class="w-2/3 phone:w-1/2 text-clip flex pl-5 md:pl-10 pb-4 pt-4 lg:pt-8 text-base md:text-md lg:text-xl xl:text-2xl"
                 >
                   {{ $t(`${logo.name}.description`) }}
                 </div>
@@ -199,7 +209,7 @@
                     rightLogoAnimationClasses[index] !==
                     `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
                   "
-                  class="w-1/2 flex pr-6 pt-8 text-lg"
+                  class="w-2/3 phone:w-1/2 text-clip flex phone:w-1/2 flex pb-4 pr-4 lg:pr-6 pt-4 lg:pt-8 text-base md:text-md lg:text-xl xl:text-2xl"
                 >
                   <p>{{ $t(`${logo.name}.description`) }}</p>
                 </div>
@@ -210,9 +220,9 @@
                 'z-30 duration-1000 opacity-100':
                   hoveredLogo.index === index && hoveredLogo.side === 'right',
               }"
-              class="opacity-0 z-10 pointer-events-none transition-opacity text-center"
+              class="opacity-0 z-10 pointer-events-none transition-opacity text-center absolute top-[85%] xl:top-[90%]"
             >
-              <h1 class="text-4xl">{{ $t(`${logo.name}.title`) }}</h1>
+              <h1 class="font-semibold phone:text-2xl xl:text-4xl">{{ $t(`${logo.name}.title`) }}</h1>
             </div>
           </div>
         </div>
@@ -225,8 +235,9 @@
       <div class="flex items-center justify-center relative">
         <!-- SwitchButton -->
         <div
+          v-if="!isMobile"
           @click="prevSlide()"
-          class="cursor-pointer mr-3 animate-bounce z-10"
+          class="cursor-pointer mr-3 animate-bounce z-10 prev-button"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -243,45 +254,42 @@
           </svg>
         </div>
         <!-- Card -->
-        <div class="w-full lg:ml-0 relative h-[840px] 2xl:h-[800px] lg:h-[700px] md:w-3/4 lg:w-full">
+        <div @touchstart="touchStart" @touchmove="touchMove" class="w-full lg:ml-0 relative h-[840px] 2xl:h-[800px] lg:h-[700px] md:w-3/4 lg:w-full">
           <div
             class="flex m-auto w-full h-full bg-transparent flex-col flex lg:flex-row md:w-5/6 lg:w-full lg:w-full z-10 invisible"
             :style="realSlideStyle"
             @transitionend="resetTransition"
           >
-            <div class="p-12 lg:w-1/2 h-1/2 lg:h-full flex flex-col text-center lg:text-start bg-white rounded-project-card-top lg:rounded-project-card-left">
-              <h1 class="mb-8">
+            <div class="p-12 lg:w-1/2 h-1/2 lg:h-full flex flex-col p-2 phone:p-8 lg:p-12 text-center lg:text-start bg-white rounded-project-card-top lg:rounded-project-card-left border-t-dark border-x-dark border-b-white border-2 lg:border-none">
+              <h1 class="mb-4 lg:mb-8">
                 <span class="text-2xl lg:text-3xl lg:text-4xl 2xl:text-5xl text-center">{{
                   $t(`${projectData[SlideIndex].translationKey}.name`)
                 }}</span>
               </h1>
-              <p class="text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
+              <p class="text-lg phone:text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
                 {{
                   $t(`${projectData[SlideIndex].translationKey}.description`)
                 }}
               </p>
             </div>
-            <div class="flex flex-col h-1/2 lg:h-full lg:w-1/2 px-14 lg:px-6 xl:px-14 lg:pt-28 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right ">
-              <img class="pb-4 h-3/4 lg:h-4/6 xl:h-3/4" src="@/assets/Picture3.jpg" />
-              <div>
-                <p class="text-3xl 2xl:text-4xl text-white">{{ $t("toolsused") }}</p>
-              </div>
+            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-10 phone:px-14 lg:px-6 xl:px-14 lg:pt-44 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right border-b-white border-x-white border-t-dark border-2 lg:border-none">
+              <img class="pb-4 w-full h-full lg:h-4/6 xl:h-3/4 rounded-small-icon-computer" src="@/assets/Picture3.jpg" />
             </div>
           </div>
           <!-- Animation Card -->
 
           <div
-            class="flex m-auto flex-col lg:flex-row h-full 2xl:h-[800px] lg:h-[700px] md:w-5/6 lg:w-full bg-transparent absolute inset-0  z-0"
+            class="flex m-auto flex-col lg:flex-row h-full 2xl:h-[800px] lg:h-[700px] md:w-5/6 lg:w-full bg-transparent absolute inset-0 z-0"
             @transitionend="resetTransition"
             ref="fakeCardElement"
           >
-            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full p-12 text-center lg:text-start bg-white text-dark rounded-project-card-top lg:rounded-project-card-left">
-              <h1 class="mb-8">
+            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full p-2 phone:p-8 lg:p-12 text-center lg:text-start bg-white text-dark rounded-project-card-top lg:rounded-project-card-left border-t-dark border-x-dark border-b-white border-2 lg:border-none">
+              <h1 class="mb-4 lg:mb-8 ">
                 <span class="text-2xl lg:text-3xl lg:text-4xl 2xl:text-5xl text-center font-semibold">{{
                   $t(`${projectData[AnimationCardIndex].translationKey}.name`)
                 }}</span>
               </h1>
-              <p class="text-xl lg:text-2xl lg:text-3xl 2xl:text-4xl">
+              <p class="text-xl lg:text-2xl xl:text-3xl 2xl:text-4xl">
                 {{
                   $t(
                     `${projectData[AnimationCardIndex].translationKey}.description`
@@ -289,19 +297,17 @@
                 }}
               </p>
             </div>
-            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-14 lg:px-6 xl:px-14 lg:pt-28 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right">
-              <img class="pb-4 w-full h-3/4 lg:h-4/6 xl:h-3/4" src="@/assets/Picture3.jpg" />
-              <div>
-                <p class="text-3xl 2xl:text-4xl  text-white">{{ $t("toolsused") }}</p>
-              </div>
+            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-10 phone:px-14 lg:px-6 xl:px-14 lg:pt-44 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right border-b-white border-x-white border-t-dark border-2 lg:border-none">
+              <img class="pb-4 w-full h-full lg:h-4/6 xl:h-3/4 rounded-small-icon-computer" src="@/assets/Picture3.jpg" />
             </div>
           </div>
 
         </div>
         <!-- SwitchButton -->
         <div
+          v-if="!isMobile"
           @click="nextSlide()"
-          class="cursor-pointer ml-3 animate-bounce z-10"
+          class="cursor-pointer ml-3 animate-bounce z-10 next-button"
         >
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -320,7 +326,7 @@
       </div>
 
       <!-- Contact section -->
-      <div class="w-full lg:h-[1300px] mt-44 lg:pb-36 flex flex-col md:flex-row">
+      <div class="w-full lg:h-[900px] mt-44 lg:pb-36 flex flex-col md:flex-row">
         <div class="md:w-1/2 text-white space-y-14 order-2 md:order-1 bg-dark w-screen md:py-auto pb-24 md:pb-0">
           <h1 class="mt-8 text-4xl 2xl:text-5xl">{{ $t("contact") }}</h1>
           <div class="flex items-center">
@@ -387,27 +393,27 @@
         <!-- Email form -->
         <div class="md:w-1/2 flex flex-col order-1 md:order-2">
           <div class="w-full md:pl-12 mt-8 pb-24">
-            <div class="pl-7 pb-12 text-4xl 2xl:text-5xl">
+            <div class="phone:pl-7 pb-12 text-3xl phone:text-4xl 2xl:text-5xl">
               <h1 class="md:text-dark text-white ">{{ $t("form.formtitle") }}</h1>
             </div>
             <form class="flex flex-col" @submit.prevent="sendEmail">
               <input
                 v-model="form.email"
-                class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2"
+                class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2 outline-none focus:bg-white focus:border-dark focus:text-dark transition-colors duration-300"
                 type="email"
                 name="email"
                 :placeholder="$t('form.email')"
               />
               <input
                 v-model="form.name"
-                class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2"
+                class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2 outline-none focus:bg-white focus:border-dark focus:text-dark transition-colors duration-300"
                 type="text"
                 name="name"
                 :placeholder="$t('form.name')"
               />
               <input
                 v-model="form.subject"
-                class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2"
+                class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2 outline-none focus:bg-white focus:border-dark focus:text-dark transition-colors duration-300"
                 type="text"
                 name="subject"
                 :placeholder="$t('form.subject')"
@@ -415,7 +421,7 @@
               <div class="flex flex-col lg:flex-row">
                 <textarea
                   v-model="form.message"
-                  class="bg-dark text-white rounded-icon-computer p-4 xl2:p-6 pl-10 lg:mr-4 lg:mr-8 pb-24 lg:0 mb-10 lg:mb-0 flex-1 font-semibold 2xl:text-lg border-2"
+                  class="bg-dark text-white rounded-icon-computer p-4 xl2:p-6 pl-10 lg:mr-4 lg:mr-8 pb-24 lg:0 mb-10 lg:mb-0 flex-1 font-semibold 2xl:text-lg border-2 outline-none focus:bg-white focus:border-dark focus:text-dark transition-colors duration-300"
                   name="message"
                   :placeholder="$t('form.message')"
                 ></textarea>
@@ -454,6 +460,10 @@ export default {
     const hoveredLogo = ref({ index: null, side: null });
     const SlideIndex = ref(0);
     const AnimationCardIndex = ref(0);
+    const touchStartX = ref(0);
+    const touchCurrentX = ref(0);
+    const isMobile = ref(false);
+    const threshold = 120;
     const transitioning = ref(false);
     const direction = ref("next");
     const fakeCardElement = ref(null);
@@ -466,11 +476,16 @@ export default {
 
     onMounted(() => {
       updateLogoArrays();
-      window.addEventListener("resize", calculateAnimationClasses);
+      checkScreenSize();
+      window.addEventListener("resize", calculateAnimationClasses, checkScreenSize);
       nextTick().then(() => {
         calculateAnimationClasses();
       });
     });
+
+    const checkScreenSize = () => {
+      isMobile.value = window.innerWidth < 768;
+    };
 
     function toggleLanguage() {
       isEnglish.value = !isEnglish.value;
@@ -494,7 +509,8 @@ export default {
         const midPoint = viewportWidth / 2;
         const center = rect.left + rect.width / 2;
 
-        const threshold = viewportWidth * 0.2;
+        let threshold
+        threshold = viewportWidth < 768 ? viewportWidth * 0.5 : viewportWidth * 0.2;
 
         const distanceFromLeftEdge = rect.left;
         const distanceFromRightEdge = viewportWidth - (rect.left + rect.width);
@@ -553,11 +569,30 @@ export default {
       }
     };
 
+      const touchStart = (event) => {
+        touchStartX.value = event.touches[0].clientX;
+      };
+
+      const touchMove = (event) => {
+        touchCurrentX.value = event.touches[0].clientX;
+        const moveDistance = touchCurrentX.value - touchStartX.value;
+
+        if (Math.abs(moveDistance) > threshold) {
+          if (moveDistance > 0) {
+            nextSlide();
+          } else {
+            prevSlide();
+          }
+          touchStartX.value = touchCurrentX.value;
+        }
+      };
+
     const nextSlide = () => {
       if (transitioning.value) return;
       direction.value = "next";
       fakeCardElement.value.style.transition = "none";
       fakeCardElement.value.style.transform = "translateX(-160%)";
+      void fakeCardElement.value.offsetHeight;
       AnimationCardIndex.value = getNextSlideIndex(
         AnimationCardIndex.value,
         "next",
@@ -575,6 +610,7 @@ export default {
       direction.value = "prev";
       fakeCardElement.value.style.transition = "none";
       fakeCardElement.value.style.transform = "translateX(160%)";
+      void fakeCardElement.value.offsetHeight;
       AnimationCardIndex.value = getNextSlideIndex(
         AnimationCardIndex.value,
         "prev",
@@ -618,7 +654,7 @@ export default {
     };
 
     onUnmounted(() => {
-      window.removeEventListener("resize", calculateAnimationClasses);
+      window.removeEventListener("resize", calculateAnimationClasses, checkScreenSize);
     });
 
     return {
@@ -639,6 +675,9 @@ export default {
       SlideIndex,
       nextSlide,
       prevSlide,
+      touchStart,
+      touchMove,
+      isMobile,
       realSlideStyle,
       resetTransition,
       projectData,

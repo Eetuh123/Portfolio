@@ -8,29 +8,32 @@ module.exports = {
         },
         boxShadow: {
           'icon-shadow': '0px 0px 4px rgba(0, 0, 0, 0.01)',
+          'neuroOutie': '-3px -3px 7px #ffffffa6, 3px 3px 5px rgba(94, 104, 121, 0.712)',
         },
         colors: {
-            'white': '#ffffff',
+            'white': '#F9F6EE',
             'dark': '#232121',
         },
         grandientColorStops: {
             50: '50%',
         },
         backgroundImage: {
-            'split-half': "linear-gradient(to right, #232121 50.05%, #FFFFFF 50.05%)",
-            'split-half-reverse': "linear-gradient(to right, #FFFFFF 50.05%, #232121 50.05%)",
+            'split-half': "linear-gradient(to right, #232121 50.05%, #F9F6EE 50.05%)",
+            'split-half-reverse': "linear-gradient(to right, #F9F6EE 50.05%, #232121 50.05%)",
           },
         borderRadius: {
             'icon-computer': '3.125rem',
             'medium-icon-computer': '2.5rem',
             'small-icon-computer': '1.875rem',
+            'tiny-icon-computer': '1.2rem',
+            'phone-icon-computer': '0.95rem',
             'project-card-top': '3.125rem 3.125rem 0rem 0rem',
             'project-card-left': '3.125rem 0rem 0rem 3.125rem',
             'project-card-right': '0rem 3.125rem 3.125rem 0rem',
             'project-card-bottom': '0rem 0rem 3.125rem 3.125rem',
         },
         screens: {
-          'phone': '400px',
+          'phone': '530px',
         },
         keyframes: {
             grow: {

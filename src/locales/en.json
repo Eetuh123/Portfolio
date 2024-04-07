@@ -1,7 +1,9 @@
 {
     "greeting": "Hello, I'm Eetu Huotari welcome to my portfolio page",
+    "coding": "Coding",
+    "design": "Design",
     "codingtitle": "I am a passionate self-taught programmer, I have been on the path of programming for the last 3 years. I love solving problems and finding different ways to approach various challenges.",
-    "designtitle": "I am also a big fan of visual design. I greatly enjoy designing visually pleasing pages. Over the last year, I have expanded my expertise into UI/UX design.",
+    "designtitle": "I am also a big fan of visual design and greatly enjoy creating visually pleasing pages. Over the last year, I have expanded my expertise into UI/UX design.",
     "socials": "Social media",
     "sendemail": "Send an email",
     "call": "Call",
@@ -18,7 +20,7 @@
     },
     "more": {
         "name": "More projects coming soon",
-        "description": "I'm currently working on new projects and will be adding them to my portfolio soon. Stay tuned for more updates!"
+        "description": "I'm currently working on new project and will be adding it to my portfolio soon."
     },
     "form":{
         "formtitle": "Contact me",
@@ -30,42 +32,42 @@
     },
     "docker": {
         "title": "Docker",
-        "description": "Docker is a tool designed to make it easier to create, deploy, and run applications by using containers. Containers allow a developer to package up an application with all parts it needs, such as libraries and other dependencies, and ship it all out as one package."
+        "description": "Lightweight virtual machine for operating applications in various environments, simplifying program transfer and use on different computers."
     },
     "figma": {
         "title": "Figma",
-        "description": "Figma is a cloud-based design tool that is similar to Sketch in functionality and features, but with big differences that make Figma better for team collaboration."
+        "description": "Web-based UI/UX design tool, used for creating prototypes and testing user interfaces before implementation."
     },
     "github": {
         "title": "GitHub",
-        "description": "GitHub is a code hosting platform for version control and collaboration. It lets you and others work together on projects from anywhere."
+        "description": "Comprehensive version control and collaboration platform for software development, enabling code sharing, tracking and version management."
     },
     "javascript": {
         "title": "JavaScript",
-        "description": "JavaScript is a programming language that adds interactivity to your website. This happens in games, in the behavior of responses when buttons are pressed or with data entry on forms; with dynamic styling; with animation, etc."
+        "description": "Versatile programming language commonly used in web pages as a frontend language, but also in backend applications through Node.js."
     },
     "laravel": {
         "title": "Laravel",
-        "description": "Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling."
+        "description": "PHP framework for modern web applications, offering a wide range of tools and libraries for fast, secure, and maintainable development."
     },
     "mysql": {
         "title": "MySQL",
-        "description": "MySQL is an open-source relational database management system. Its name is a combination of 'My', the name of co-founder Michael Widenius’s daughter, and 'SQL', the abbreviation for Structured Query Language."
+        "description": "Database software used for storing, transferring, and manipulating data on websites and applications."
     },
     "npm": {
         "title": "NPM",
-        "description": "npm is the package manager for JavaScript and the world’s largest software registry. Discover packages of reusable code — and assemble them in powerful new ways."
+        "description": "JavaScript package management system, used for distributing packages and managing dependencies in Node.js projects."
     },
     "php": {
         "title": "PHP",
-        "description": "PHP is a popular general-purpose scripting language that is especially suited to web development."
+        "description": "Server-side programming language for developing web applications, used as a backend language for creating pages and database applications."
     },
     "tailwindCSS": {
         "title": "Tailwind",
-        "description": "Tailwind CSS is a highly customizable, low-level CSS framework that gives you all of the building blocks you need to build bespoke designs without any annoying opinionated styles you have to fight to override."
+        "description": "CSS framework that speeds up and simplifies the styling of web pages. It streamlines the development process by providing ready-made styles."
     },
     "vue": {
         "title": "Vue",
-        "description": "Vue is a progressive framework for building user interfaces. Unlike other monolithic frameworks, Vue is designed from the ground up to be incrementally adoptable."
+        "description": "JavaScript-based framework for front-end development, for building dynamic and reactive web pages and user interfaces."
     }
   }
