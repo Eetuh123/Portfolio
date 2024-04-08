@@ -1,5 +1,6 @@
 {
-    "greeting": "Hello, I'm Eetu Huotari welcome to my portfolio page",
+    "greeting": "Hello, I'm Eetu Huotari",
+    "welcome": "Welcome to my portfolio",
     "coding": "Coding",
     "design": "Design",
     "codingtitle": "I am a passionate self-taught programmer, I have been on the path of programming for the last 3 years. I love solving problems and finding different ways to approach various challenges.",
@@ -8,6 +9,7 @@
     "sendemail": "Send an email",
     "call": "Call",
     "contact": "Contact",
+    "profencies": "Proficiencies",
     "projects": "Projects",
     "toolsused": "Tools I used",
     "moder": {

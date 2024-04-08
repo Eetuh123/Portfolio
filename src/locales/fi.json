@@ -1,14 +1,16 @@
 {
-    "greeting": "Hei, Olen Eetu Huotari Tervetuloa Portofoliooni",
+    "greeting": "Hei, Olen Eetu Huotari",
+    "welcome": "Tervetuloa Portofoliooni",
     "coding": "Coding",
     "design": "Design",
-    "codingtitle": "Olen intohimoinen itseoppinut ohjelmoija, joka on viettänyt viimeiset kolme vuotta ohjelmoinnin parissa. Rakastan ongelmien ratkaisemista ja uusien lähestymistapojen löytämistä erilaisiin haasteisiin.",
-    "designtitle": "Olen myös innokas visuaalisen suunnittelun ystävä, joka nauttii visuaalisesti miellyttävien sivujen luomisesta. Viimeisen vuoden aikana olen syventänyt osaamistani UI/UX-suunnittelun alueella.",
+    "codingtitle": "Olen itseoppinut ohjelmoija, joka on viettänyt viimeiset kolme vuotta ohjelmoinnin parissa. Nautin ongelmien ratkaisemista ja uusien lähestymistapojen löytämistä erilaisiin pulmiin.",
+    "designtitle": "Olen myös visuaalisen suunnittelun ystävä, nautin visuaalisesti miellyttävien sivujen luomisesta. Viimeisen vuoden aikana olen syventänyt osaamistani UI/UX-suunnittelun alueella.",
     "socials": "Sosiaaliset Mediat",
     "sendemail": "Lähetä sähköpostia",
     "call": "Soita",
     "contact": "Yhteystiedot",
-    "projects": "Projects i have worked on",
+    "profencies": "Osaaminen",
+    "projects": "Projektit",
     "toolsused": "Käytetyt työkalut",
     "moder": {
         "name": "Moder",
@@ -32,7 +34,7 @@
     },
     "docker": {
         "title": "Docker",
-        "description": "Kevyt virtuaalikone, sovellusten käyttöön ja sujuvaan toimintaan erilaisissa ympäristöissä. Se helpottaa ohjelmien siirtoa, käyttöä eri tietokoneilla"
+        "description": "Kevyt virtuaalikone, sovellusten käyttöön erilaisissa ympäristöissä. Se helpottaa ohjelmien siirtoa, käyttöä eri tietokoneilla"
     },
     "figma": {
         "title": "Figma",
@@ -48,7 +50,7 @@
     },
     "laravel": {
         "title": "Laravel",
-        "description": "PHP-kehys moderneihin web-sovelluksiin, joka tarjoaa laajan valikoiman työkaluja ja kirjastoja nopeaan, turvalliseen ja ylläpidettävään kehitykseen."
+        "description": "PHP-kehys web-sovelluksiin, joka tarjoaa laajan valikoiman työkaluja ja kirjastoja nopeaan, turvalliseen ja ylläpidettävään kehitykseen."
     },
     "mysql": {
         "title": "MySQL",

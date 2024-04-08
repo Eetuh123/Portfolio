@@ -21,6 +21,9 @@ module.exports = {
             'split-half': "linear-gradient(to right, #232121 50.05%, #F9F6EE 50.05%)",
             'split-half-reverse': "linear-gradient(to right, #F9F6EE 50.05%, #232121 50.05%)",
           },
+          transitionDuration: {
+            '300': '350ms',
+          },
         borderRadius: {
             'icon-computer': '3.125rem',
             'medium-icon-computer': '2.5rem',

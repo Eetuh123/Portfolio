@@ -55,13 +55,18 @@
 
       <!-- Hero section -->
       <div class="flex-col md:flex-row flex mb-40">
-        <div class="md:w-1/3 mt-12 order-2 md:order-1 text-white">
-        <div>
-          <h1 class="text-5xl pt-10 px-6 md:pr-6 md:pl-0">
+        <div class="md:w-1/3 mt-12 order-2 md:order-1 text-white rounded-phone-icon-computer">
+        <div class="bg-white rounded-phone-icon-computer w-fit">
+          <h1 class="text-5xl text-dark">
             {{ $t("greeting") }}
           </h1>
         </div>
-          <div class="bg-dark rounded-tiny-icon-computer border-white border-2 md:border-none">
+        <div class="bg-dark rounded-phone-icon-computer w-fit">
+          <p class="text-5xl text-white md:pl-0">
+            {{ $t("welcome") }}
+          </p>
+        </div>
+          <div class="bg-dark rounded-tiny-icon-computer border-white mt-12 border-2 md:border-none">
           <h1 class="text-5xl pt-10 px-6 md:pr-6 md:pl-0">
             {{ $t("coding") }}
           </h1>
@@ -82,8 +87,9 @@
       </div>
 
       <!-- Logos section -->
-      <div class="flex items-center justify-center mb-14">
-        <h1 class="text-6xl text-center">{{ $t("projects") }}</h1>
+      <div class="flex items-center justify-center mb-14 relative text-6xl text-center">
+        <div class="absolute bottom-0 text-dark w-full">{{ $t("profencies") }}</div>
+        <div class="absolute bottom-0 text-white w-full" :style="clipStyle">{{ $t("profencies") }}</div>
       </div>
       <div class="w-full flex gap-4 phone:gap-6 md:gap-10">
         <!-- Logos on Left -->
@@ -102,10 +108,10 @@
               :src="logo.src"
               :alt="logo.name"
               :class="{
-                'z-30 scale-[1.05]':
+                'z-30 scale-[1.05] grayscale-0':
                   hoveredLogo.index === index && hoveredLogo.side === 'left',
               }"
-              class="pointer-events-none z-10 h-12 w-12 phone:h-20 phone:w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
+              class="transition duration-300 grayscale pointer-events-none z-10 h-12 w-12 phone:h-20 phone:w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
             />
             <div
               :class="[
@@ -129,7 +135,7 @@
                     leftLogoAnimationClasses[index] ==
                     `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
                   "
-                  class="w-2/3 phone:w-1/2 text-clip flex pb-4 pl-5 phone:pl-10 pt-4 lg:pt-8 text-base md:text-md lg:text-xl xl:text-2xl"
+                  class="w-2/3 phone:w-1/2 text-clip flex pb-4 pl-5 phone:pl-10 pt-4 lg:pt-6 text-base md:text-md lg:text-xl xl:text-2xl"
                 >
                   {{ $t(`${logo.name}.description`) }}
                 </div>
@@ -139,7 +145,7 @@
                     leftLogoAnimationClasses[index] !==
                     `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
                   "
-                  class="w-2/3 md:w-1/2 text-clip flex flex pb-4 pr-4 lg:pr-6 pt-4 lg:pt-8 text-base md:text-md lg:text-xl xl:text-2xl"
+                  class="w-2/3 md:w-1/2 text-clip flex flex pb-4 pr-4 lg:pr-6 pt-4 lg:pt-6 text-base md:text-md lg:text-xl xl:text-2xl"
                 >
                   <p>{{ $t(`${logo.name}.description`) }}</p>
                 </div>
@@ -172,10 +178,10 @@
               :src="logo.src"
               :alt="logo.name"
               :class="{
-                'z-30 scale-[1.05]':
+                'z-30 scale-[1.05] grayscale-0':
                   hoveredLogo.index === index && hoveredLogo.side === 'right',
               }"
-              class="pointer-events-none z-10 h-12 w-12 phone:h-20 phone:w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
+              class="transition duration-300 grayscale pointer-events-none z-10 h-12 w-12 phone:h-20 phone:w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 xl:h-fit xl:w-fit"
             />
             <div
               :class="[
@@ -199,7 +205,7 @@
                     rightLogoAnimationClasses[index] ==
                     `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
                   "
-                  class="w-2/3 phone:w-1/2 text-clip flex pl-5 md:pl-10 pb-4 pt-4 lg:pt-8 text-base md:text-md lg:text-xl xl:text-2xl"
+                  class="w-2/3 phone:w-1/2 text-clip flex pl-5 md:pl-10 pb-4 pt-4 lg:pt-6 text-base md:text-md lg:text-xl xl:text-2xl"
                 >
                   {{ $t(`${logo.name}.description`) }}
                 </div>
@@ -209,7 +215,7 @@
                     rightLogoAnimationClasses[index] !==
                     `hover:animate-growreverse right-0 hover:right-0 ease-in duration-300`
                   "
-                  class="w-2/3 phone:w-1/2 text-clip flex phone:w-1/2 flex pb-4 pr-4 lg:pr-6 pt-4 lg:pt-8 text-base md:text-md lg:text-xl xl:text-2xl"
+                  class="w-2/3 phone:w-1/2 text-clip flex phone:w-1/2 flex pb-4 pr-4 lg:pr-6 pt-4 lg:pt-6 text-base md:text-md lg:text-xl xl:text-2xl"
                 >
                   <p>{{ $t(`${logo.name}.description`) }}</p>
                 </div>
@@ -229,8 +235,9 @@
       </div>
 
       <!-- Projects section -->
-      <div class="flex items-center justify-center mb-14">
-        <h1 class="text-6xl">{{ $t("projects") }}</h1>
+      <div class="flex items-center justify-center mb-14 text-6xl relative text-center">
+        <div class="absolute bottom-0 text-dark w-full">{{ $t("projects") }}</div>
+        <div class="absolute bottom-0 text-white w-full" :style="clipStyle">{{ $t("projects") }}</div>
       </div>
       <div class="flex items-center justify-center relative">
         <!-- SwitchButton -->
@@ -371,7 +378,7 @@
                   <img
                     src="@/assets/icons/github.svg"
                     alt="github"
-                    class="w-12 h-12 2xl:w-16 2xl:h-16 hover:scale-110 transition-scale duration-300"
+                    class="w-12 h-12 2xl:w-16 2xl:h-16 grayscale hover:grayscale-0 hover:scale-110 transition-scale duration-300"
                   />
                 </a>
               </div>
@@ -382,7 +389,7 @@
                   <img
                     src="@/assets/icons/linkedin.svg"
                     alt="linkedin"
-                    class="w-12 h-12 2xl:w-16 2xl:h-16 hover:scale-110 transition-scale duration-300"
+                    class="w-12 h-12 2xl:w-16 2xl:h-16 grayscale hover:grayscale-0 hover:scale-110 transition-scale duration-300"
                   />
                 </a>
               </div>
@@ -467,6 +474,7 @@ export default {
     const transitioning = ref(false);
     const direction = ref("next");
     const fakeCardElement = ref(null);
+    const clipPosition = ref(50);
     const form = ref({
       email: "",
       name: "",
@@ -491,6 +499,10 @@ export default {
       isEnglish.value = !isEnglish.value;
       i18n.global.locale = isEnglish.value ? "en" : "fi";
     }
+
+    const clipStyle = computed(() => ({
+      clipPath: `polygon(0 0, ${clipPosition.value}% 0, ${clipPosition.value}% 100%, 0 100%)`,
+    }));
 
     const updateLogoArrays = () => {
       const midpoint = Math.ceil(logos.value.length / 2);
@@ -682,6 +694,7 @@ export default {
       resetTransition,
       projectData,
       fakeCardElement,
+      clipStyle,
     };
   },
 };
