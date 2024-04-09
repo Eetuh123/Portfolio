@@ -403,7 +403,7 @@
             <div class="phone:pl-7 pb-12 text-3xl phone:text-4xl 2xl:text-5xl">
               <h1 class="md:text-dark text-white ">{{ $t("form.formtitle") }}</h1>
             </div>
-            <form class="flex flex-col" @submit.prevent="sendEmail">
+            <form class="flex flex-col" ref="emailForm" @submit.prevent="sendEmail">
               <input
                 v-model="form.email"
                 class="bg-dark text-white rounded-icon-computer p-8 xl2:p-10 mb-10 font-semibold 2xl:text-lg border-2 outline-none focus:bg-white focus:border-dark focus:text-dark transition-colors duration-300"
@@ -475,6 +475,7 @@ export default {
     const direction = ref("next");
     const fakeCardElement = ref(null);
     const clipPosition = ref(50);
+    const emailForm = ref(null);
     const form = ref({
       email: "",
       name: "",
@@ -652,18 +653,20 @@ export default {
     });
 
     const sendEmail = async () => {
-      try {
-        const result = await emailjs.sendForm(
-          "service_358tl3q",
-          "template_hzup9em",
-          form.value,
-          "t8hd8mfRQtp1tgD1H"
-        );
-        console.log(result.text);
-      } catch (error) {
-        console.error(error.text);
-      }
-    };
+        if (!emailForm.value) return;
+
+        try {
+          const result = await emailjs.sendForm(
+            "service_358tl3q",
+            "template_k3gpzag",
+            emailForm.value,
+            "t8hd8mfRQtp1tgD1H"
+          );
+          console.log(result.text);
+        } catch (error) {
+          console.error(error.message || error);
+        }
+      };
 
     onUnmounted(() => {
       window.removeEventListener("resize", calculateAnimationClasses, checkScreenSize);
@@ -677,6 +680,7 @@ export default {
       leftLogoAnimationClasses,
       rightLogoAnimationClasses,
       sendEmail,
+      emailForm ,
       form,
       toggleLanguage,
       isEnglish,
