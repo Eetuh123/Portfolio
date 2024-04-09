@@ -239,7 +239,7 @@
         <div class="absolute bottom-0 text-dark w-full">{{ $t("projects") }}</div>
         <div class="absolute bottom-0 text-white w-full" :style="clipStyle">{{ $t("projects") }}</div>
       </div>
-      <div class="flex items-center justify-center relative">
+      <div class="flex items-center justify-center relative phone:mx-8 md:px-0">
         <!-- SwitchButton -->
         <div
           v-if="!isMobile"
@@ -267,7 +267,7 @@
             :style="realSlideStyle"
             @transitionend="resetTransition"
           >
-            <div class="p-12 lg:w-1/2 h-1/2 lg:h-full flex flex-col p-2 phone:p-8 lg:p-12 text-center lg:text-start bg-white rounded-project-card-top lg:rounded-project-card-left border-t-dark border-x-dark border-b-white border-2 lg:border-none">
+            <div class="p-12 lg:w-1/2 h-1/2 lg:h-full flex flex-col p-2 phone:p-8 lg:p-12 text-center lg:text-start bg-white rounded-project-card-top lg:rounded-project-card-left border-t-dark border-dark border-r-2 border-t-2 lg:border-none">
               <h1 class="mb-4 lg:mb-8">
                 <span class="text-2xl lg:text-3xl lg:text-4xl 2xl:text-5xl text-center">{{
                   $t(`${projectData[SlideIndex].translationKey}.name`)
@@ -279,7 +279,7 @@
                 }}
               </p>
             </div>
-            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-10 phone:px-14 lg:px-6 xl:px-14 lg:pt-44 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right border-b-white border-x-white border-t-dark border-2 lg:border-none">
+            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-10 phone:px-14 lg:px-6 xl:px-14 lg:pt-44 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right border-white border-b-2 border-l-2 lg:border-none">
               <img class="pb-4 w-full h-full lg:h-4/6 xl:h-3/4 rounded-small-icon-computer" src="@/assets/Picture3.jpg" />
             </div>
           </div>
@@ -290,7 +290,7 @@
             @transitionend="resetTransition"
             ref="fakeCardElement"
           >
-            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full p-2 phone:p-8 lg:p-12 text-center lg:text-start bg-white text-dark rounded-project-card-top lg:rounded-project-card-left border-t-dark border-x-dark border-b-white border-2 lg:border-none">
+            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full p-2 phone:p-8 lg:p-12 text-center lg:text-start bg-white text-dark rounded-project-card-top lg:rounded-project-card-left border-dark border-r-2 border-t-2 lg:border-none">
               <h1 class="mb-4 lg:mb-8 ">
                 <span class="text-2xl lg:text-3xl lg:text-4xl 2xl:text-5xl text-center font-semibold">{{
                   $t(`${projectData[AnimationCardIndex].translationKey}.name`)
@@ -304,7 +304,7 @@
                 }}
               </p>
             </div>
-            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-10 phone:px-14 lg:px-6 xl:px-14 lg:pt-44 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right border-b-white border-x-white border-t-dark border-2 lg:border-none">
+            <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-10 phone:px-14 lg:px-6 xl:px-14 lg:pt-44 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right border-white border-b-2 border-l-2 lg:border-none">
               <img class="pb-4 w-full h-full lg:h-4/6 xl:h-3/4 rounded-small-icon-computer" src="@/assets/Picture3.jpg" />
             </div>
           </div>

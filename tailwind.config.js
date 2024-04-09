@@ -20,6 +20,7 @@ module.exports = {
         backgroundImage: {
             'split-half': "linear-gradient(to right, #232121 50.05%, #F9F6EE 50.05%)",
             'split-half-reverse': "linear-gradient(to right, #F9F6EE 50.05%, #232121 50.05%)",
+            'split-test': "linear-gradient(to right, hsl(60, 40%, 50%) 50%, hsl(240, 40%, 50%) 50%) 1",
           },
           transitionDuration: {
             '300': '350ms',

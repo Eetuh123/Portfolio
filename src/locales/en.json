@@ -3,8 +3,8 @@
     "welcome": "Welcome to my portfolio",
     "coding": "Coding",
     "design": "Design",
-    "codingtitle": "I am a passionate self-taught programmer, I have been on the path of programming for the last 3 years. I love solving problems and finding different ways to approach various challenges.",
-    "designtitle": "I am also a big fan of visual design and greatly enjoy creating visually pleasing pages. Over the last year, I have expanded my expertise into UI/UX design.",
+    "codingtitle": "I am a self-taught programmer who has spent the last three years immersed in programming. I enjoy solving problems and finding new approaches to various puzzles.",
+    "designtitle": "I am also a fan of visual design, enjoying the creation of visually pleasing pages. Over the last year, I have deepened my expertise in the area of UI/UX design.",
     "socials": "Social media",
     "sendemail": "Send an email",
     "call": "Call",
@@ -14,11 +14,11 @@
     "toolsused": "Tools I used",
     "moder": {
         "name": "Moder",
-        "description": "Moder is a web application that allows users to create and share their own quizzes. The application is built with Laravel and Vue.js. The application is designed to be user-friendly and easy to use. The application is still in development and new features are added regularly."
+        "description": "I had the opportunity to primarily delve into the world of web development. Over the course of two years, I gained valuable experience and developed my skills with several technologies, such as Vue, Laravel, MySQL, Tailwind CSS, and virtual machines. This experience has given me a solid foundation for developing web applications."
     },
     "kvh": {
         "name": "KVH",
-        "description": "Moder is a web application that allows users to create and share their own quizzes. The application is built with Laravel and Vue.js. The application is designed to be user-friendly and easy to use. The application is still in development and new features are added regularly."
+        "description": "Is my first proper web design project where I had the opportunity to design and implement a website from start to finish. The site is designed with Figma, built with Vue and Tailwind, using the Email.Js library to send emails. The website was designed and built in collaboration with KVH."
     },
     "more": {
         "name": "More projects coming soon",
