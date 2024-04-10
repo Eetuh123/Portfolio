@@ -280,7 +280,7 @@
               </p>
             </div>
             <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-10 phone:px-14 lg:px-6 xl:px-14 lg:pt-44 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right border-white border-b-2 border-l-2 lg:border-none">
-              <img class="pb-4 w-full h-full lg:h-4/6 xl:h-3/4 rounded-small-icon-computer" src="@/assets/Picture3.jpg" />
+              <img class="pb-4 w-full h-full lg:h-4/6 xl:h-3/4 rounded-small-icon-computer" src="https://placehold.co/600x400" />
             </div>
           </div>
           <!-- Animation Card -->
@@ -305,7 +305,7 @@
               </p>
             </div>
             <div class="flex flex-col lg:w-1/2 h-1/2 lg:h-full px-10 phone:px-14 lg:px-6 xl:px-14 lg:pt-44 pt-4 bg-dark rounded-project-card-bottom lg:rounded-project-card-right border-white border-b-2 border-l-2 lg:border-none">
-              <img class="pb-4 w-full h-full lg:h-4/6 xl:h-3/4 rounded-small-icon-computer" src="@/assets/Picture3.jpg" />
+              <img class="pb-4 w-full h-full lg:h-4/6 xl:h-3/4 rounded-small-icon-computer" src="https://placehold.co/600x400" />
             </div>
           </div>
 
