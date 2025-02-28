@@ -1,6 +1,47 @@
 <script>
-
+  import { onMount } from 'svelte';
+  
+  let x = 0;
+  let y = 0;
+  let ballSize = 10;
+  let maxSpeed = 0.05;
+  let targetX = 0;
+  let targetY = 0;
+  
+  /** @param {MouseEvent} event */
+  function handleMouseMove(event) {
+    targetX = event.clientX;
+    targetY = event.clientY;
+  }
+  
+  onMount(() => {
+    function animate() {
+      let dx = targetX - x;
+      let dy = targetY - y;
+      x += dx * maxSpeed;
+      y += dy * maxSpeed;
+      
+      requestAnimationFrame(animate);
+    }
+    
+    animate();
+    
+    return () => {
+    };
+  });
 </script>
+
+<svelte:window on:mousemove={handleMouseMove} />
+
+<div 
+    class="absolute pointer-events-none rounded-full bg-darkish shadow-md hover:shadow-lg transition-shadow duration-300"
+    style="
+      left: {x - ballSize/2}px;
+      top: {y - ballSize/2}px;
+      width: {ballSize}px;
+      height: {ballSize}px;
+    "
+></div>
 
 <div class="bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col">
     <div class="flex justify-between w-full">
