@@ -157,7 +157,7 @@
 		<div class="space-y-12">
 			<div class="w-full">
 				<div class="flex ml-auto text-right max-w-[50%]">
-					<h2 class="font-inter font-semibold text-5xl">
+					<h2 class="font-raleway font-semibold text-5xl">
 						I Design and create web applications I help you create new visual brand for your
 						business UX or Visuals
 					</h2>
