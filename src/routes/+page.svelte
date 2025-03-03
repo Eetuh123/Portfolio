@@ -1,5 +1,6 @@
 <script>
 	import { onMount } from 'svelte';
+	import { transformWithEsbuild } from 'vite';
 
 	let x = 0;
 	let y = 0;
@@ -33,6 +34,7 @@
 <svelte:window on:mousemove={handleMouseMove} />
 
 <div
+
 	class="absolute top-0 left-0 opacity-0 invisible absolute pointer-events-none rounded-full bg-darkish shadow-md hover:shadow-lg transition-shadow duration-300"
 	style="
       left: {x - ballSize / 2}px;
@@ -133,7 +135,8 @@
 </div>
 <!-- Designer -->
 <div
-	class="text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col"
+
+	class="absolute top-0 left-0 opacity-0 invisible text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col"
 >
 	<div class="flex justify-between w-full">
 		<h1
@@ -222,4 +225,5 @@
 			</div>
 		</div>
 	</div>
+
 </div>
