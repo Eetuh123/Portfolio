@@ -6,8 +6,8 @@ module.exports = {
   theme: {
     extend: {
         fontFamily: {
-            inter: ['var(--font-inter)'],
-            raleway: ['var(--font-raleway)']
+          inter: ['Inter', ...defaultTheme.fontFamily.sans],
+          raleway: ['Raleway', ...defaultTheme.fontFamily.sans]
         },
         colors: {
           'white': '#F9F6EE',

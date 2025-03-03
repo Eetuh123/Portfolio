@@ -57,9 +57,10 @@
 		"vite": "^6.0.0"
 	},
 	"dependencies": {
-		"@fontsource/inter": "^5.1.1"
+		"@fontsource/inter": "^5.1.1",
+		"@fontsource/raleway": "^5.2.5"
 	},
 	"optionalDependencies": {
-    	"@rollup/rollup-linux-x64-gnu": "4.6.1"
-  }
+		"@rollup/rollup-linux-x64-gnu": "4.6.1"
+	}
 }
