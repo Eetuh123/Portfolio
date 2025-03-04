@@ -1,5 +1,38 @@
 <script>
+// @ts-nocheck
 	import { onMount } from 'svelte';
+
+    let currentState
+
+    let activeStates = {
+    Dev: true,
+    Des: false,
+    Me: false
+    };
+
+    function toggleState(setState) {
+            if (setState === 'Me') {
+            activeStates = {
+            Dev: true,
+            Des: true,
+            Me: !activeStates.Me
+            };
+        } else {
+            const otherState = setState === 'Dev' ? 'Des' : 'Dev';
+            if (activeStates.Me) {
+                activeStates = {
+                    Dev: setState === 'Dev',
+                    Des: setState === 'Des',
+                    Me: false
+                };
+            } else if (activeStates[setState] && !activeStates[otherState]){
+                
+            } else {
+                activeStates[setState] = !activeStates[setState];
+            }
+        }
+        console.log('Active states:', activeStates);
+    }
 
 	let x = 0;
 	let y = 0;
@@ -8,7 +41,6 @@
 	let targetX = 0;
 	let targetY = 0;
 
-	/** @param {MouseEvent} event */
 	function handleMouseMove(event) {
 		targetX = event.clientX;
 		targetY = event.clientY;
@@ -32,8 +64,9 @@
 
 <svelte:window on:mousemove={handleMouseMove} />
 
+
 <div
-	class="absolute top-0 left-0 opacity-0 invisible absolute pointer-events-none rounded-full bg-darkish shadow-md hover:shadow-lg transition-shadow duration-300"
+	class="absolute pointer-events-none rounded-full bg-darkish shadow-md hover:shadow-lg transition-shadow duration-300"
 	style="
       left: {x - ballSize / 2}px;
       top: {y - ballSize / 2}px;
@@ -42,20 +75,23 @@
     "
 ></div>
 <!-- Developer -->
-<div class="bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col">
+<div class="{!activeStates.Dev ? 'absolute top-0 left-0 opacity-0 invisible' : ''} bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col">
 	<div class="flex justify-between w-full">
 		<h1
 			class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
+            on:click={() => toggleState('Me')}
 		>
 			Eetu Huotari
 		</h1>
 		<div class="flex justify-end text-5xl">
 			<p
 				class="bg-off-white text-darkish py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300"
+                on:click={() => toggleState('Des')}
 			>
 				Designer
 			</p>
 			<p class="p-4 hover:text-orange hover:cursor-pointer transition-colors duration-300"
+                on:click={() => toggleState('Dev')}
             >
 				Developer
 			</p>
@@ -133,7 +169,7 @@
 </div>
 <!-- Designer -->
 <div
-	class="text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col"
+	class="{!activeStates.Des ? 'absolute top-0 left-0 opacity-0 invisible' : ''} text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col"
 >
 	<div class="flex justify-between w-full">
 		<h1
@@ -142,11 +178,15 @@
 			Eetu Huotari
 		</h1>
 		<div class="flex justify-end text-5xl">
-			<p class="py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300">
+			<p 
+                class="py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300"
+                on:click={() => toggleState('Des')}
+            >
 				Designer
 			</p>
 			<p
 				class="bg-darkish p-4 text-off-white hover:text-orange hover:cursor-pointer transition-colors duration-300"
+                on:click={() => toggleState('Dev')}
 			>
 				Developer
 			</p>
