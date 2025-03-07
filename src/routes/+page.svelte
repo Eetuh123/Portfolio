@@ -1,7 +1,8 @@
 <script>
 // @ts-nocheck
 	import { onMount } from 'svelte';
-	import SlideUp from '$lib/components/SlideUp.svelte';
+	import BackgroundSlider from '$lib/components/BackgroundSlider.svelte';
+	import Slide from '$lib/components/Slide.svelte';
 
     let currentState
 
@@ -75,20 +76,29 @@
       height: {ballSize}px;
     "
 ></div>
+
+<BackgroundSlider delay={2000} duration={600}>
+	<div class="bg-orange flex items-center justify-center h-full">
+		<Slide direction="out" delay={1700} duration={300} distance={50}>
+	  	<h1 class="text-off-white text-5xl">Eetu Huotari</h1>
+		</Slide>
+	</div>
+  </BackgroundSlider>
+
 <!-- Developer -->
 <div class="{!activeStates.Dev ? 'absolute top-0 left-0 opacity-0 invisible' : ''} bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col">
 	<div class="flex justify-between w-full">
 
 
 		  
-		  <SlideUp delay={1000}>
+		<Slide direction="in" delay={2500} duration={300}>
 		<h1
 			class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
             on:click={() => toggleState('Me')}
 		>
 			Eetu Huotari
 		</h1>
-		</SlideUp>
+		</Slide>
 		<div class="flex justify-end text-5xl">
 			<p
 				class="bg-off-white text-darkish py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300"
