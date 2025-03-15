@@ -2,8 +2,14 @@
 // @ts-nocheck
     import { onMount } from "svelte";
     import gsap from 'gsap';
-    import { mainTimeline, animationTrigger } from './animationStore.js';
+    import { mainTimeline, animationTrigger, DevAnimations, DesAnimations } from './animationStore.js';
     
+    export let animationKey = '';
+    const animationStores = {
+    'Dev': DevAnimations,
+    'Des': DesAnimations,
+    '': animationTrigger
+    };
     export let delay = 0;
     export let duration = 0.5;
     export let distance = 100;
@@ -32,9 +38,8 @@
         ease: "power2.out"
       }
     );
-    mainTimeline.add(tl, 0);
 
-    const unsubscribe = animationTrigger.subscribe(() => {
+    const unsubscribe = animationStores[animationKey].subscribe(() => {
         tl.restart();
     });
 
@@ -53,7 +58,7 @@
         }
     }
     export function replayAllAnimations() {
-        ainTimeline.restart();
+        mainTimeline.restart();
     }
     export function toggleDirection() {
         direction = direction === "in" ? "out" : "in";
