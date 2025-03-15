@@ -3,38 +3,37 @@
 	import { onMount } from 'svelte';
 	import BackgroundSlider from '$lib/components/BackgroundSlider.svelte';
 	import Slide from '$lib/components/Slide.svelte';
-
-    let currentState
+	import gsap from 'gsap';
+	import { replayAllAnimations } from '$lib/components/animationStore.js';
+	
 
     let activeStates = {
     Dev: true,
     Des: false,
     Me: false
     };
+	let activateAnimation;
 
-    function toggleState(setState) {
-            if (setState === 'Me') {
-            activeStates = {
-            Dev: true,
-            Des: true,
-            Me: !activeStates.Me
-            };
-        } else {
-            const otherState = setState === 'Dev' ? 'Des' : 'Dev';
-            if (activeStates.Me) {
-                activeStates = {
-                    Dev: setState === 'Dev',
-                    Des: setState === 'Des',
-                    Me: false
-                };
-            } else if (activeStates[setState] && !activeStates[otherState]){
-                
-            } else {
-                activeStates[setState] = !activeStates[setState];
-            }
+	function toggleState(setState) {
+    if (setState === 'Me') {
+        activeStates.Me = !activeStates.Me;
+    } else {
+        const otherState = setState === 'Dev' ? 'Des' : 'Dev';
+                if (!activeStates[otherState]) {
+
+            return;
         }
-        console.log('Active states:', activeStates);
-    }
+		activeStates[setState] = true;
+		activateAnimation = setState
+		setTimeout(() => {
+        	
+        	activeStates[otherState] = false;
+			replayAllAnimations();
+    	}, 1000)
+	}
+
+    console.log('Active states:', activeStates);
+}
 
 	let x = 0;
 	let y = 0;
@@ -66,9 +65,8 @@
 
 <svelte:window on:mousemove={handleMouseMove} />
 
-
 <div
-	class="absolute pointer-events-none rounded-full bg-darkish shadow-md hover:shadow-lg transition-shadow duration-300"
+	class="absolute pointer-events-none rounded-full bg-darkish shadow-md hover:shadow-lg transition-shadow duration-300 z-200"
 	style="
       left: {x - ballSize / 2}px;
       top: {y - ballSize / 2}px;
@@ -76,22 +74,17 @@
       height: {ballSize}px;
     "
 ></div>
-
-<BackgroundSlider delay={2000} duration={600}>
+<BackgroundSlider delay={2} duration={0.6}>
 	<div class="bg-orange flex items-center justify-center h-full">
-		<Slide direction="out" delay={1700} duration={300} distance={50}>
+		<Slide direction="out" delay={1.4} duration={0.9} distance={50}>
 	  	<h1 class="text-off-white text-5xl">Eetu Huotari</h1>
 		</Slide>
 	</div>
   </BackgroundSlider>
-
 <!-- Developer -->
 <div class="{!activeStates.Dev ? 'absolute top-0 left-0 opacity-0 invisible' : ''} bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col">
-	<div class="flex justify-between w-full">
-
-
-		  
-		<Slide direction="in" delay={2500} duration={300}>
+	<div class="flex justify-between w-full"> 
+		<Slide direction="in" delay={2.4} duration={0.8}>
 		<h1
 			class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
             on:click={() => toggleState('Me')}
@@ -113,13 +106,14 @@
 			</p>
 		</div>
 	</div>
-
+	{#if activeStates.Dev}
 	<div class="mt-42 mr-auto text-left max-w-[50%]">
-		<h2 class="font-inter font-semibold text-5xl">
+		<h2 class="font-inter font-semibold text-5xl"
+		>
 			I build web based applications got a problem? Let me help you solve it
 		</h2>
 	</div>
-
+	{/if}
 	<div class="flex-grow flex items-end">
 		<div class="w-full">
 			<div class="space-y-12">
@@ -185,14 +179,17 @@
 </div>
 <!-- Designer -->
 <div
-	class="{!activeStates.Des ? 'absolute top-0 left-0 opacity-0 invisible' : ''} text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col"
+	class="{!activeStates.Des ? 'absolute top-0 left-0 opacity-0 invisible' : 'SlideContent fixed top-0 left-0'} text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col z-10"
 >
 	<div class="flex justify-between w-full">
+		<Slide direction="in" duration={1}>
 		<h1
 			class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
+			on:click={() => toggleState('Me')}
 		>
 			Eetu Huotari
 		</h1>
+		</Slide>
 		<div class="flex justify-end text-5xl">
 			<p 
                 class="py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300"
@@ -200,12 +197,14 @@
             >
 				Designer
 			</p>
+			<Slide>
 			<p
 				class="bg-darkish p-4 text-off-white hover:text-orange hover:cursor-pointer transition-colors duration-300"
                 on:click={() => toggleState('Dev')}
 			>
 				Developer
 			</p>
+			</Slide>
 		</div>
 	</div>
 
@@ -279,3 +278,20 @@
 		</div>
 	</div>
 </div>
+
+<style>
+	.SlideContent {
+		transform: translateY(100%); 
+		animation: SlideContent 0.8s ease-in forwards ;
+	}
+	@keyframes SlideContent {
+	0% {
+		transform: translateY(100%);
+	}
+	
+	100% {
+		transform: translateY(0);
+	}
+	}
+
+</style>
