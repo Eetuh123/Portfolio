@@ -19,7 +19,9 @@
 		 delay: delay,
 		 duration: duration
 		}
-		)
+		).then(() => {
+			shouldRender = false
+		})
 	});
 </script>
 
