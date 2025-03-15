@@ -4,7 +4,7 @@
 	import BackgroundSlider from '$lib/components/BackgroundSlider.svelte';
 	import Slide from '$lib/components/Slide.svelte';
 	import gsap from 'gsap';
-	import { replayAllAnimations } from '$lib/components/animationStore.js';
+	import { replayAnimations } from '$lib/components/animationStore.js';
 
 	let activeStates = {
 		Dev: true,
@@ -18,7 +18,9 @@
 	tl.set(element, {zIndex: 100})
 	tl.fromTo(element,
 		{y: '100%'},
-		{y: '0%', duration: 0.8}
+		{y: '0%', duration: 0.8,
+		 ease: "power2.out"
+		}
 	)
 	.set(element, {zIndex: ''}, "+=1")
 
@@ -37,12 +39,12 @@
 				? '.Dev-slide'
 				: '.Des-slide' 
 			)
+			replayAnimations(setState)
 			pageSwapAnimation(element)
 
 			activeStates[setState] = true;
 			activateAnimation = setState;
 			setTimeout(() => {
-				replayAllAnimations();
 				activeStates[otherState] = false;
 			}, 1000);
 		}
@@ -89,7 +91,7 @@
       height: {ballSize}px;
     "
 ></div>
-<BackgroundSlider delay={2} duration={0.6}>
+<BackgroundSlider delay={2} duration={1}>
 	<div class="bg-orange flex items-center justify-center h-full">
 		<Slide direction="out" delay={1.4} duration={0.9} distance={50}>
 			<h1 class="text-off-white text-5xl">Eetu Huotari</h1>
@@ -103,7 +105,7 @@
 		: 'fixed top-0 left-0'} bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col Dev-slide"
 >
 	<div class="flex justify-between w-full">
-		<Slide direction="in" delay={2.3} duration={0.8}>
+		<Slide direction="in" delay={2.3} duration={0.8} animationKey='Dev'>
 			<button
 				class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
 				on:click={() => toggleState('Me')}

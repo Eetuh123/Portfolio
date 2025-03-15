@@ -17,7 +17,8 @@
 		{y: 0 },
 		{y: "-100vh",
 		 delay: delay,
-		 duration: duration
+		 duration: duration,
+		 ease: "power2.out",
 		}
 		).then(() => {
 			shouldRender = false
