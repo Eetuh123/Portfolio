@@ -1,39 +1,54 @@
 <script>
-// @ts-nocheck
+	// @ts-nocheck
 	import { onMount } from 'svelte';
 	import BackgroundSlider from '$lib/components/BackgroundSlider.svelte';
 	import Slide from '$lib/components/Slide.svelte';
 	import gsap from 'gsap';
 	import { replayAllAnimations } from '$lib/components/animationStore.js';
-	
 
-    let activeStates = {
-    Dev: true,
-    Des: false,
-    Me: false
-    };
+	let activeStates = {
+		Dev: true,
+		Des: false,
+		Me: false
+	};
 	let activateAnimation;
 
-	function toggleState(setState) {
-    if (setState === 'Me') {
-        activeStates.Me = !activeStates.Me;
-    } else {
-        const otherState = setState === 'Dev' ? 'Des' : 'Dev';
-                if (!activeStates[otherState]) {
+	function pageSwapAnimation(element) {
+	let tl = gsap.timeline()
+	tl.set(element, {zIndex: 100})
+	tl.fromTo(element,
+		{y: '100%'},
+		{y: '0%', duration: 0.8}
+	)
+	.set(element, {zIndex: ''}, "+=1")
 
-            return;
-        }
-		activeStates[setState] = true;
-		activateAnimation = setState
-		setTimeout(() => {
-        	
-        	activeStates[otherState] = false;
-			replayAllAnimations();
-    	}, 1000)
 	}
+	
+	function toggleState(setState) {
+		if (setState === 'Me') {
+			activeStates.Me = !activeStates.Me;
+		} else {
+			const otherState = setState === 'Dev' ? 'Des' : 'Dev';
+			if (!activeStates[otherState]) {
+				return;
+			}
+			let element= document.querySelector(
+				setState === 'Dev' 
+				? '.Dev-slide'
+				: '.Des-slide' 
+			)
+			pageSwapAnimation(element)
 
-    console.log('Active states:', activeStates);
-}
+			activeStates[setState] = true;
+			activateAnimation = setState;
+			setTimeout(() => {
+				replayAllAnimations();
+				activeStates[otherState] = false;
+			}, 1000);
+		}
+
+		console.log('Active states:', activeStates);
+	}
 
 	let x = 0;
 	let y = 0;
@@ -77,42 +92,46 @@
 <BackgroundSlider delay={2} duration={0.6}>
 	<div class="bg-orange flex items-center justify-center h-full">
 		<Slide direction="out" delay={1.4} duration={0.9} distance={50}>
-	  	<h1 class="text-off-white text-5xl">Eetu Huotari</h1>
+			<h1 class="text-off-white text-5xl">Eetu Huotari</h1>
 		</Slide>
 	</div>
-  </BackgroundSlider>
+</BackgroundSlider>
 <!-- Developer -->
-<div class="{!activeStates.Dev ? 'absolute top-0 left-0 opacity-0 invisible' : ''} bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col">
-	<div class="flex justify-between w-full"> 
-		<Slide direction="in" delay={2.4} duration={0.8}>
-		<h1
-			class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
-            on:click={() => toggleState('Me')}
-		>
-			Eetu Huotari
-		</h1>
+<div
+	class="{!activeStates.Dev
+		? 'absolute top-0 left-0 opacity-0 invisible'
+		: 'fixed top-0 left-0'} bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col Dev-slide"
+>
+	<div class="flex justify-between w-full">
+		<Slide direction="in" delay={2.3} duration={0.8}>
+			<button
+				class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
+				on:click={() => toggleState('Me')}
+			>
+				Eetu Huotari
+			</button>
 		</Slide>
 		<div class="flex justify-end text-5xl">
-			<p
+			<button
 				class="bg-off-white text-darkish py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300"
-                on:click={() => toggleState('Des')}
+				on:click={() => toggleState('Des')}
 			>
 				Designer
-			</p>
-			<p class="p-4 hover:text-orange hover:cursor-pointer transition-colors duration-300"
-                on:click={() => toggleState('Dev')}
-            >
+			</button>
+			<button
+				class="p-4 hover:text-orange hover:cursor-pointer transition-colors duration-300"
+				on:click={() => toggleState('Dev')}
+			>
 				Developer
-			</p>
+			</button>
 		</div>
 	</div>
 	{#if activeStates.Dev}
-	<div class="mt-42 mr-auto text-left max-w-[50%]">
-		<h2 class="font-inter font-semibold text-5xl"
-		>
-			I build web based applications got a problem? Let me help you solve it
-		</h2>
-	</div>
+		<div class="mt-42 mr-auto text-left max-w-[50%]">
+			<h2 class="font-inter font-semibold text-5xl">
+				I build web based applications got a problem? Let me help you solve it
+			</h2>
+		</div>
 	{/if}
 	<div class="flex-grow flex items-end">
 		<div class="w-full">
@@ -143,7 +162,7 @@
 						</div>
 					</div>
 					<div class="flex space-x-4">
-						<a href="https://github.com/Eetuh123" target="_blank" rel="noopener noreferrer">
+						<a href="https://github.com/Eetuh123" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
 							<svg
 								viewBox="0 0 48 48"
 								class="w-8 h-8 fill-off-white hover:fill-orange transition-colors duration-300"
@@ -160,6 +179,7 @@
 							href="https://www.linkedin.com/in/eetu-huotari-594106238/"
 							target="_blank"
 							rel="noopener noreferrer"
+							aria-label="LinkedIn"
 						>
 							<svg
 								viewBox="0 0 48 48"
@@ -179,31 +199,33 @@
 </div>
 <!-- Designer -->
 <div
-	class="{!activeStates.Des ? 'absolute top-0 left-0 opacity-0 invisible' : 'SlideContent fixed top-0 left-0'} text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col z-10"
+	class="{!activeStates.Des
+		? 'absolute top-0 left-0 opacity-0 invisible'
+		: 'fixed top-0 left-0'} text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col Des-slide"
 >
 	<div class="flex justify-between w-full">
 		<Slide direction="in" duration={1}>
-		<h1
-			class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
-			on:click={() => toggleState('Me')}
-		>
-			Eetu Huotari
-		</h1>
+			<button
+				class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
+				on:click={() => toggleState('Me')}
+			>
+				Eetu Huotari
+			</button>
 		</Slide>
 		<div class="flex justify-end text-5xl">
-			<p 
-                class="py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300"
-                on:click={() => toggleState('Des')}
-            >
-				Designer
-			</p>
-			<Slide>
-			<p
-				class="bg-darkish p-4 text-off-white hover:text-orange hover:cursor-pointer transition-colors duration-300"
-                on:click={() => toggleState('Dev')}
+			<button
+				class="py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300"
+				on:click={() => toggleState('Des')}
 			>
-				Developer
-			</p>
+				Designer
+			</button>
+			<Slide>
+				<button
+					class="bg-darkish p-4 text-off-white hover:text-orange hover:cursor-pointer transition-colors duration-300"
+					on:click={() => toggleState('Dev')}
+				>
+					Developer
+				</button>
 			</Slide>
 		</div>
 	</div>
@@ -244,7 +266,7 @@
 					</div>
 
 					<div class="flex space-x-4">
-						<a href="https://github.com/Eetuh123" target="_blank" rel="noopener noreferrer">
+						<a href="https://github.com/Eetuh123" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
 							<svg
 								viewBox="0 0 48 48"
 								class="w-8 h-8 fill-darkish hover:fill-orange transition-colors duration-300"
@@ -261,6 +283,7 @@
 							href="https://www.linkedin.com/in/eetu-huotari-594106238/"
 							target="_blank"
 							rel="noopener noreferrer"
+							aria-label="LinkedIn"
 						>
 							<svg
 								viewBox="0 0 48 48"
@@ -280,18 +303,5 @@
 </div>
 
 <style>
-	.SlideContent {
-		transform: translateY(100%); 
-		animation: SlideContent 0.8s ease-in forwards ;
-	}
-	@keyframes SlideContent {
-	0% {
-		transform: translateY(100%);
-	}
-	
-	100% {
-		transform: translateY(0);
-	}
-	}
 
 </style>

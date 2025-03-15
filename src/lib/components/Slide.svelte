@@ -32,7 +32,7 @@
         ease: "power2.out"
       }
     );
-    mainTimeline.add(tl);
+    mainTimeline.add(tl, 0);
 
     const unsubscribe = animationTrigger.subscribe(() => {
         tl.restart();
