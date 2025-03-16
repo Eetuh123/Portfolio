@@ -25,6 +25,10 @@
 	.set(element, {zIndex: ''}, "+=1")
 
 	}
+
+	function getTextClass(target) {
+    return activeStates[target] ? 'text-orange' : '';
+  	}
 	
 	function toggleState(setState) {
 		if (setState === 'Me') {
@@ -105,7 +109,7 @@
 		: 'fixed top-0 left-0'} bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col Dev-slide"
 >
 	<div class="flex justify-between w-full">
-		<Slide direction="in" delay={2.3} duration={0.8} animationKey='Dev'>
+		<Slide direction="in" delay={0.9} duration={0.7} animationKey='Dev'>
 			<button
 				class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
 				on:click={() => toggleState('Me')}
@@ -114,25 +118,32 @@
 			</button>
 		</Slide>
 		<div class="flex justify-end text-5xl">
+			<Slide direction="in" delay={0.9} duration={0.7} animationKey='Dev'>
 			<button
-				class="bg-off-white text-darkish py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300"
+				class="bg-off-white text-darkish py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300 "
 				on:click={() => toggleState('Des')}
 			>
 				Designer
 			</button>
+			</Slide>
+			<Slide direction="in" delay={0.9} duration={0.7} animationKey='Dev'>
 			<button
-				class="p-4 hover:text-orange hover:cursor-pointer transition-colors duration-300"
+				class="p-4 hover:text-orange hover:cursor-pointer transition-colors duration-300 {getTextClass('Dev')}"
 				on:click={() => toggleState('Dev')}
 			>
 				Developer
 			</button>
+			</Slide>
 		</div>
 	</div>
 	{#if activeStates.Dev}
+
 		<div class="mt-42 mr-auto text-left max-w-[50%]">
+			<Slide direction="in" delay={0.7} duration={0.6} animationKey='Dev'>
 			<h2 class="font-inter font-semibold text-5xl">
 				I build web based applications got a problem? Let me help you solve it
 			</h2>
+			</Slide>
 		</div>
 	{/if}
 	<div class="flex-grow flex items-end">
@@ -140,15 +151,18 @@
 			<div class="space-y-12">
 				<div class="flex justify-between items-center font-raleway pt-12 text-lg">
 					<div class="flex space-x-6">
+						<Slide direction="in" delay={0.5} duration={0.8} animationKey='Dev'>
 						<div class="flex flex-col">
 							<span class="">Contact:</span>
+
 							<a
 								href="mailto:contact@eetuhuotari.dev"
 								class="hover:text-orange hover:cursor-pointer transition-colors duration-300"
 								>contact@eetuhuotari.dev</a
 							>
 						</div>
-
+					</Slide>
+					<Slide direction="in" delay={0.5} duration={0.8} animationKey='Dev'>
 						<div class="flex flex-col">
 							<span class="">Current location:</span>
 							<a
@@ -157,12 +171,16 @@
 								>43°36'16.2"N 1°26'39.1"E</a
 							>
 						</div>
-
+					</Slide>
+					<Slide direction="in" delay={0.5} duration={0.8} animationKey='Dev'>	
 						<div class="flex flex-col">
 							<span class="">Copyright:</span>
 							<span>@Eetu Huotari 2025</span>
 						</div>
+					</Slide>
 					</div>
+
+					<Slide direction="in" delay={0.5} duration={0.8} animationKey='Dev'>
 					<div class="flex space-x-4">
 						<a href="https://github.com/Eetuh123" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
 							<svg
@@ -194,6 +212,7 @@
 							</svg>
 						</a>
 					</div>
+					</Slide>
 				</div>
 			</div>
 		</div>
@@ -206,7 +225,7 @@
 		: 'fixed top-0 left-0'} text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col Des-slide"
 >
 	<div class="flex justify-between w-full">
-		<Slide direction="in" duration={1}>
+		<Slide direction="in" delay={0.7} duration={0.7} animationKey='Des'>
 			<button
 				class="font-raleway font-semibold text-7xl hover:text-orange hover:cursor-pointer transition-colors duration-250 whitespace-nowrap"
 				on:click={() => toggleState('Me')}
@@ -215,13 +234,15 @@
 			</button>
 		</Slide>
 		<div class="flex justify-end text-5xl">
+			<Slide direction="in" delay={0.7} duration={0.7} animationKey='Des'>
 			<button
-				class="py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300"
+				class="py-4 px-8 hover:text-orange hover:cursor-pointer transition-colors duration-300 {getTextClass('Des')}"
 				on:click={() => toggleState('Des')}
 			>
 				Designer
 			</button>
-			<Slide>
+		</Slide>
+		<Slide direction="in" delay={0.7} duration={0.7} animationKey='Des'>
 				<button
 					class="bg-darkish p-4 text-off-white hover:text-orange hover:cursor-pointer transition-colors duration-300"
 					on:click={() => toggleState('Dev')}
@@ -236,13 +257,16 @@
 		<div class="space-y-12">
 			<div class="w-full">
 				<div class="flex ml-auto text-right max-w-[50%]">
+					<Slide direction="in" delay={0.6} duration={0.7} animationKey='Des'>
 					<h2 class="font-raleway font-semibold text-5xl">
 						I Design and create web applications I help you create new visual brand for your
 						business UX or Visuals
 					</h2>
+				</Slide>
 				</div>
 				<div class="flex justify-between items-center font-raleway pt-12 text-lg">
 					<div class="flex space-x-6">
+						<Slide direction="in" delay={0.5} duration={0.7} animationKey='Des'>
 						<div class="flex flex-col">
 							<span class="">Contact:</span>
 							<a
@@ -251,7 +275,8 @@
 								>contact@eetuhuotari.dev</a
 							>
 						</div>
-
+						</Slide>
+						<Slide direction="in" delay={0.5} duration={0.7} animationKey='Des'>
 						<div class="flex flex-col">
 							<span class="">Current location:</span>
 							<a
@@ -260,13 +285,15 @@
 								>43°36'16.2"N 1°26'39.1"E</a
 							>
 						</div>
-
+						</Slide>
+						<Slide direction="in" delay={0.5} duration={0.7} animationKey='Des'>
 						<div class="flex flex-col">
 							<span class="">Copyright:</span>
 							<span>@Eetu Huotari 2025</span>
 						</div>
+						</Slide>
 					</div>
-
+					<Slide direction="in" delay={0.5} duration={0.7} animationKey='Des'>
 					<div class="flex space-x-4">
 						<a href="https://github.com/Eetuh123" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
 							<svg
@@ -298,6 +325,7 @@
 							</svg>
 						</a>
 					</div>
+					</Slide>
 				</div>
 			</div>
 		</div>
