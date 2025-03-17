@@ -234,8 +234,12 @@
 		</div>
 	</div>
 </div>
-<div class="h-10 w-full rest">
-	<h1> BOOM</h1>
+<div class="h-64 w-full bg-darkish rest text-off-white">
+	<div class="flex ml-auto text-right">
+	<p class="text-7xl">Technical Skills</p>
+	</div>
+	<div class="px-20 w-full bg-green border-y-2 border-solid border-off-white">
+	</div>
 </div>
 </div>
 <!-- Designer -->
