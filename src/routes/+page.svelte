@@ -15,14 +15,29 @@
 
 	function pageSwapAnimation(element) {
 	let tl = gsap.timeline()
+	.set(".rest",{ 
+		display: "none"
+	})
 	tl.set(element, {zIndex: 100})
 	tl.fromTo(element,
-		{y: '100%'},
+		{y: '100%',
+		position: "fixed",
+		top: "0",
+		left: "0"
+		},
 		{y: '0%', duration: 0.8,
 		 ease: "power2.out"
 		}
 	)
-	.set(element, {zIndex: ''}, "+=1")
+	.set(element, {
+		zIndex: '',
+		position: "",
+		top: "",
+		left: ""
+	}, "+=1")
+	.set(".rest",{ 
+		display: "block",
+	})
 
 	}
 
@@ -103,10 +118,11 @@
 	</div>
 </BackgroundSlider>
 <!-- Developer -->
+<div class="{!activeStates.Dev
+		? 'hidden'
+		: 'block'}">
 <div
-	class="{!activeStates.Dev
-		? 'absolute top-0 left-0 opacity-0 invisible'
-		: 'fixed top-0 left-0'} bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col Dev-slide"
+	class="bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col Dev-slide"
 >
 	<div class="flex justify-between w-full">
 		<Slide direction="in" delay={0.9} duration={0.7} animationKey='Dev'>
@@ -218,11 +234,16 @@
 		</div>
 	</div>
 </div>
+<div class="h-10 w-full rest">
+	<h1> BOOM</h1>
+</div>
+</div>
 <!-- Designer -->
+<div class="{!activeStates.Des
+		? 'hidden'
+		: 'block'}">
 <div
-	class="{!activeStates.Des
-		? 'absolute top-0 left-0 opacity-0 invisible'
-		: 'fixed top-0 left-0'} text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col Des-slide"
+	class="text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col Des-slide"
 >
 	<div class="flex justify-between w-full">
 		<Slide direction="in" delay={0.7} duration={0.7} animationKey='Des'>
@@ -330,6 +351,10 @@
 			</div>
 		</div>
 	</div>
+</div>
+<div class="h-10 w-full rest">
+	<h1> BOOM</h1>
+</div>
 </div>
 
 <style>
