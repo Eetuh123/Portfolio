@@ -62,46 +62,8 @@
 			}, 1000);
 		}
 	}
-
-	let x = 0;
-	let y = 0;
-	let ballSize = 24;
-	let maxSpeed = 0.05;
-	let targetX = 0;
-	let targetY = 0;
-
-	function handleMouseMove(event) {
-		targetX = event.clientX;
-		targetY = event.clientY;
-	}
-
-	onMount(() => {
-		function animate() {
-			let dx = targetX - x;
-			let dy = targetY - y;
-			x += dx * maxSpeed;
-			y += dy * maxSpeed;
-
-			requestAnimationFrame(animate);
-		}
-
-		animate();
-
-		return () => {};
-	});
 </script>
 
-<svelte:window on:mousemove={handleMouseMove} />
-
-<div
-	class="absolute pointer-events-none rounded-full bg-darkish shadow-md hover:shadow-lg transition-shadow duration-300 z-200"
-	style="
-      left: {x - ballSize / 2}px;
-      top: {y - ballSize / 2}px;
-      width: {ballSize}px;
-      height: {ballSize}px;
-    "
-></div>
 <BackgroundSlider delay={2} duration={1}>
 	<div class="bg-orange flex items-center justify-center h-full">
 		<Slide direction="out" delay={1.4} duration={0.9} distance={50}>
@@ -110,7 +72,7 @@
 	</div>
 </BackgroundSlider>
 <!-- Developer -->
-<div class="dev-section">
+<div class="dev-section scroll-smooth">
 	<div
 		class="bg-darkish text-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col dev-slide"
 	>
@@ -150,8 +112,15 @@
 			<div class="mt-42 mr-auto text-left max-w-[50%]">
 				<Slide direction="in" delay={0.7} duration={0.6} animationKey="Dev">
 					<h2 class="font-inter font-semibold text-5xl">
-						I build web based applications got a problem? Let me help you solve it
+						I build web based applications got a 
 					</h2>
+
+				</Slide>
+				<Slide direction="in" delay={0.65} duration={0.6} 
+				animationKey="Dev">
+				<h2 class="font-inter font-semibold text-5xl">
+					problem? Let me help you solve it
+				</h2>
 				</Slide>
 			</div>
 		{/if}
@@ -235,8 +204,10 @@
 	<!-- Technical skills section -->
 	<div class="rest">
 		<div class="py-16 w-full bg-darkish text-off-white font-raleway">
+			<Slide direction="in" delay={1.65} duration={0.6} 
+			animationKey="Dev">
 			<p class="text-6xl text-right px-20 pb-4">Technical Skills</p>
-
+			</Slide>
 			<div
 				class="px-20 w-full h-full bg-green border-y-2 border-solid border-off-white flex justify-center gap-16 py-20 text-4xl"
 			>
@@ -244,10 +215,10 @@
 				<p>JavaScript</p>
 				<p>Laravel</p>
 				<p>Vue</p>
-				<p>Docker</p>
 				<p>Svelte</p>
 				<p>Docker</p>
 				<p>C#</p>
+				<p>MySql</p>
 			</div>
 		</div>
 		<!-- Project Section -->
@@ -256,7 +227,7 @@
 			<!-- Grid -->
 			<div class="grid grid-cols-2 gap-12">
 				<div
-					class="aspect-[3/2] bg-gray-700 hover:bg-[#7f15cb] transition duration-300 ease-in-out flex items-center justify-center"
+					class="aspect-[3/2] bg-off-white hover:bg-[#7f15cb] transition duration-300 ease-in-out flex items-center justify-center cursor-pointer"
 				>
 					<svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 528 215" class="p-12"
 						><title>Moder</title>
@@ -273,7 +244,7 @@
 				<div></div>
 
 				<div
-					class="aspect-[3/2] bg-gray-800 hover:bg-[#7f15cb] transition duration-300 ease-in-out flex items-center justify-center"
+					class="aspect-[3/2] bg-off-white hover:bg-[#7f15cb] transition duration-300 ease-in-out flex items-center justify-center cursor-pointer"
 				>
 					<svg
 						width="311"
@@ -306,7 +277,7 @@
 	</div>
 </div>
 <!-- Designer -->
-<div class="des-section hidden">
+<div class="des-section hidden scroll-smooth">
 	<div
 		class="text-darkish bg-off-white bg-cover h-screen w-full px-20 py-16 flex flex-col des-slide"
 	>
@@ -344,16 +315,26 @@
 		</div>
 
 		<div class="flex-grow flex items-end">
-			<div class="space-y-12">
-				<div class="w-full">
-					<div class="flex ml-auto text-right max-w-[50%]">
-						<Slide direction="in" delay={0.6} duration={0.7} animationKey="Des">
-							<h2 class="font-raleway font-semibold text-5xl">
-								I Design and create web applications I help you create new visual brand for your
-								business UX or Visuals
-							</h2>
+			<div class="w-full">
+				<div class="flex flex-col items-end ml-auto text-right font-raleway font-semibold text-5xl justify-end">
+					<Slide direction="in" delay={0.6} duration={0.7} animationKey="Des">
+						<h2 class="full">
+							I Design and create web applications
+							
+						</h2>
+					</Slide>
+					<Slide direction="in" delay={0.55} duration={0.7} animationKey="Des">
+					<h2 class="full">
+						I help you create new visual brand for your
+					</h2>
+					</Slide>
+					<Slide direction="in" delay={0.5} duration={0.7} animationKey="Des">
+						<h2 class="w-full">
+							business UX or Visuals
+						</h2>
 						</Slide>
-					</div>
+				</div>
+			<div class="space-y-12">
 					<div class="flex justify-between items-center font-raleway pt-12 text-lg">
 						<div class="flex space-x-6">
 							<Slide direction="in" delay={0.5} duration={0.7} animationKey="Des">
@@ -432,14 +413,11 @@
 		<div
 			class="px-20 w-full h-full bg-green border-y-2 border-solid border-darkish flex justify-center gap-16 py-20 text-4xl"
 		>
-			<p>TailWind</p>
-			<p>JavaScript</p>
-			<p>Laravel</p>
-			<p>Vue</p>
-			<p>Docker</p>
-			<p>Svelte</p>
-			<p>Docker</p>
-			<p>C#</p>
+			<p>Figma</p>
+			<p>Photoshop</p>
+			<p>UI design</p>
+			<p>UX design</p>
+			<p>Prototyping</p>
 		</div>
 	</div>
 	<!-- Project Section -->
@@ -448,7 +426,7 @@
 		<!-- Grid -->
 		<div class="grid grid-cols-2 gap-12">
 			<div
-				class="aspect-[3/2] bg-gray-700 hover:bg-[#7f15cb] transition duration-300 ease-in-out flex items-center justify-center"
+				class="aspect-[3/2] bg-darkish hover:bg-[#7f15cb] transition duration-300 ease-in-out flex items-center justify-center"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" fill="" viewBox="0 0 528 215" class="p-12"
 					><title>Moder</title>
@@ -465,7 +443,7 @@
 			<div></div>
 
 			<div
-				class="aspect-[3/2] bg-gray-800 hover:bg-[#7f15cb] transition duration-300 ease-in-out flex items-center justify-center"
+				class="aspect-[3/2] bg-darkish hover:bg-[#7f15cb] transition duration-300 ease-in-out flex items-center justify-center"
 			>
 				<svg
 					width="311"

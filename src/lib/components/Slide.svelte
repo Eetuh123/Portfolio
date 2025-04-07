@@ -1,7 +1,7 @@
 <script>
 // @ts-nocheck
     import { onMount } from "svelte";
-    import gsap from 'gsap';
+    import  gsap from 'gsap';
     import { mainTimeline, animationTrigger, DevAnimations, DesAnimations } from './animationStore.js';
     
     export let animationKey = '';
@@ -65,12 +65,12 @@
         
         if (tl) {
         tl.kill();
-        
         const content = element.querySelector('.slide-content');
-        tl = gsap.timeline();
+        tl = gsap.timeline({
+        });
         tl.fromTo(content, 
             { y: initialY }, 
-            { y: finalY, duration, ease: "power2.out" }
+            { y: finalY, duration, ease: "power2.out"}
         );
         }
     }
@@ -86,6 +86,6 @@
 <style>
     .slide-container {
         overflow: hidden;
-        display: inline-block;
+        padding-bottom: 0.3em;
     }
 </style>
